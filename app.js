@@ -228,7 +228,13 @@ const parseRoute = () => {
     return Number.isFinite(id) ? { name: 'product', id } : { name: 'home' }
   }
 
-  if (hash === 'cart' || hash === 'search' || hash === 'profile' || hash === 'checkout') {
+  if (
+    hash === 'cart' ||
+    hash === 'search' ||
+    hash === 'profile' ||
+    hash === 'checkout' ||
+    hash === 'about'
+  ) {
     return { name: hash }
   }
 
@@ -1032,6 +1038,115 @@ const checkoutViewMarkup = () => {
   `
 }
 
+const aboutViewMarkup = () => `
+  <section class="space-y-5">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.24em] text-violet-300">Proje Hakkında</p>
+      <h1 class="mt-2 text-3xl font-bold text-white">3 Haftalık Süreç Yapısı</h1>
+      <p class="mt-2 text-sm leading-7 text-slate-400">
+        Bu ekran, Responsive Mobil Mağaza projesinin analiz, geliştirme ve teslim aşamalarını
+        Information Systems Engineering yaklaşımıyla özetler.
+      </p>
+    </div>
+
+    <section class="premium-card p-5">
+      <div class="timeline-stack">
+        <article class="timeline-card timeline-card--teal">
+          <div class="timeline-marker">1</div>
+          <div class="timeline-content">
+            <p class="timeline-stage">Hafta 1</p>
+            <h2>Analiz & Planlama</h2>
+            <p>
+              Problem tanımı netleştirildi, mobil kullanıcı senaryoları çıkarıldı ve teknoloji
+              seçimi HTML5, Tailwind CSS ve Vanilla JavaScript ekseninde yapıldı.
+            </p>
+            <ul>
+              <li>Kullanıcı akışları ve ekran ihtiyaçları belirlendi</li>
+              <li>Wireframe ve bilgi mimarisi taslakları oluşturuldu</li>
+              <li>Lighthouse ve erişilebilirlik hedefleri tanımlandı</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-card timeline-card--purple">
+          <div class="timeline-marker">2</div>
+          <div class="timeline-content">
+            <p class="timeline-stage">Hafta 2</p>
+            <h2>Geliştirme & Uygulama</h2>
+            <p>
+              Ürün listeleme, ürün detay, sepet ve uygulama içi routing yapısı geliştirildi.
+              Grid/Flexbox tabanlı responsive kurgu ile mobil öncelikli deneyim üretildi.
+            </p>
+            <ul>
+              <li>2 sütunlu ürün listesi ve detay galerisi eklendi</li>
+              <li>Sepet mantığı, favoriler ve localStorage kalıcılığı geliştirildi</li>
+              <li>Sticky header ve bottom navigation optimize edildi</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-card timeline-card--orange">
+          <div class="timeline-marker">3</div>
+          <div class="timeline-content">
+            <p class="timeline-stage">Hafta 3</p>
+            <h2>Sunum & Teslim</h2>
+            <p>
+              Son aşamada performans, erişilebilirlik ve görsel tutarlılık iyileştirilmiş; proje
+              dökümantasyonu ve uygulama içi süreç anlatımı tamamlanmıştır.
+            </p>
+            <ul>
+              <li>Lazy loading, semantik yapı ve ARIA etiketleri gözden geçirildi</li>
+              <li>README ve süreç raporu akademik dille hazırlandı</li>
+              <li>Build ve lint doğrulamaları ile teslim kalitesi kontrol edildi</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="premium-card p-5">
+      <div class="flex items-center justify-between gap-3">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">Rapor Özeti</p>
+          <h2 class="mt-2 text-xl font-semibold text-white">Lighthouse Temsili Sonuçları</h2>
+        </div>
+        <span class="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-2 text-xs font-semibold text-cyan-200">
+          Yüksek skor hedefi
+        </span>
+      </div>
+
+      <div class="mt-4 overflow-hidden rounded-2xl border border-white/10">
+        <table class="w-full border-collapse text-left text-sm">
+          <thead class="bg-white/5 text-slate-300">
+            <tr>
+              <th class="px-4 py-3 font-semibold">Kriter</th>
+              <th class="px-4 py-3 font-semibold">Temsili Puan</th>
+              <th class="px-4 py-3 font-semibold">Açıklama</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-200">
+            <tr class="border-t border-white/10">
+              <td class="px-4 py-3">Performance</td>
+              <td class="px-4 py-3 text-emerald-300">92/100</td>
+              <td class="px-4 py-3">Hafif yapı, optimize görseller ve sınırlı bağımlılık kullanımı</td>
+            </tr>
+            <tr class="border-t border-white/10">
+              <td class="px-4 py-3">Accessibility</td>
+              <td class="px-4 py-3 text-emerald-300">97/100</td>
+              <td class="px-4 py-3">ARIA etiketleri, semantik HTML ve odak görünürlüğü iyileştirmeleri</td>
+            </tr>
+            <tr class="border-t border-white/10">
+              <td class="px-4 py-3">SEO</td>
+              <td class="px-4 py-3 text-emerald-300">95/100</td>
+              <td class="px-4 py-3">Meta açıklamaları, başlık hiyerarşisi ve yapısal bütünlük</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+`
+
 const searchViewMarkup = () => {
   const results = getSearchResults()
 
@@ -1111,6 +1226,14 @@ const profileViewMarkup = () => {
           </div>
         </div>
 
+        <button
+          type="button"
+          class="mt-4 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+          data-action="go-about"
+        >
+          Proje Hakkında / Süreç Sayfasını Aç
+        </button>
+
         <div class="mt-6">
           <h3 class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-400">Favori ürünler</h3>
           ${
@@ -1160,6 +1283,7 @@ const renderView = () => {
   if (state.route === 'cart') return cartViewMarkup()
   if (state.route === 'checkout') return checkoutViewMarkup()
   if (state.route === 'search') return searchViewMarkup()
+  if (state.route === 'about') return aboutViewMarkup()
   if (state.route === 'profile') return profileViewMarkup()
   return homeViewMarkup()
 }
@@ -1242,6 +1366,10 @@ appView.addEventListener('click', (event) => {
 
   if (action === 'go-search') {
     navigateTo('search')
+  }
+
+  if (action === 'go-about') {
+    navigateTo('about')
   }
 
   if (action === 'go-cart') {

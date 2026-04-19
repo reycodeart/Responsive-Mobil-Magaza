@@ -395,6 +395,144 @@ body.is-scrolling-down .app-header {
   line-height: 1.6;
 }
 
+.process-timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.timeline-card {
+  position: relative;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 1.5rem;
+  background: linear-gradient(180deg, rgb(15 23 42 / 0.82), rgb(9 9 15 / 0.92));
+  padding: 1.2rem 1rem 1rem;
+  overflow: hidden;
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+}
+
+.timeline-card--analysis::before {
+  background: linear-gradient(90deg, rgb(34 211 238), rgb(16 185 129));
+}
+
+.timeline-card--development::before {
+  background: linear-gradient(90deg, rgb(139 92 246), rgb(217 70 239));
+}
+
+.timeline-card--delivery::before {
+  background: linear-gradient(90deg, rgb(251 191 36), rgb(249 115 22));
+}
+
+.timeline-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.timeline-card__step {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.08);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.timeline-card__header span {
+  display: block;
+  color: rgb(148 163 184);
+  font-size: 0.78rem;
+}
+
+.timeline-card__header strong {
+  display: block;
+  margin-top: 0.2rem;
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.timeline-card__body {
+  margin-top: 1rem;
+  color: rgb(203 213 225);
+}
+
+.timeline-card__body p {
+  margin: 0 0 0.9rem;
+  color: rgb(148 163 184);
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+.timeline-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.timeline-list li {
+  position: relative;
+  padding-left: 1.2rem;
+  color: rgb(226 232 240);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.timeline-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background: rgb(34 211 238);
+}
+
+.timeline-card--development .timeline-list li::before {
+  background: rgb(168 85 247);
+}
+
+.timeline-card--delivery .timeline-list li::before {
+  background: rgb(251 191 36);
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.report-table th,
+.report-table td {
+  border-bottom: 1px solid rgb(255 255 255 / 0.08);
+  padding: 0.9rem 0.25rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.report-table th {
+  color: rgb(148 163 184);
+  font-weight: 600;
+}
+
+.report-table td {
+  color: #fff;
+}
+
+.report-table tr:last-child td {
+  border-bottom: 0;
+}
+
 .filter-grid {
   display: grid;
   gap: 0.8rem;
@@ -799,6 +937,10 @@ body.is-scrolling-down .bottom-nav {
   .checkout-grid {
     grid-template-columns: 1.15fr 0.85fr;
     align-items: start;
+  }
+
+  .process-timeline {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .product-grid {
