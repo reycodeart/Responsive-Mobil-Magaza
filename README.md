@@ -1,0 +1,1 @@
+# Responsive-Mobil-Magaza
