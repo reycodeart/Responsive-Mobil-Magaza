@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #07111d;
+  --color-ink-900: #0d1728;
+  --color-ink-800: #162235;
+  --color-surface: #edf3ff;
+  --color-brand-500: #7c3aed;
+  --color-brand-400: #8b5cf6;
+  --color-brand-300: #a78bfa;
+  --color-accent-400: #22c55e;
+  --color-accent-300: #4ade80;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+    background:
+      radial-gradient(circle at top, rgba(124, 58, 237, 0.2), transparent 32%),
+      linear-gradient(180deg, #07111d 0%, #0b1526 100%);
+    color: #edf3ff;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8;
+  }
+
+  .panel {
+    @apply rounded-[28px] border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(4,9,19,0.28)] backdrop-blur;
+  }
+
+  .nav-link {
+    @apply rounded-full px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-white/10 hover:text-white;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full border border-violet-400/40 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-violet-200;
+  }
+
+  .cta-primary {
+    @apply inline-flex items-center justify-center rounded-2xl bg-violet-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-950/30 transition hover:-translate-y-0.5 hover:bg-violet-400;
+  }
+
+  .cta-secondary {
+    @apply inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:-translate-y-0.5 hover:border-violet-300/60 hover:bg-white/10;
+  }
+
+  .product-card {
+    @apply panel overflow-hidden p-4;
+  }
+
+  .spec-chip {
+    @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200;
+  }
+
+  .feature-item {
+    @apply flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4;
+  }
+
+  .cart-row {
+    @apply flex items-center justify-between gap-3 border-b border-white/10 py-4 last:border-b-0;
+  }
+}

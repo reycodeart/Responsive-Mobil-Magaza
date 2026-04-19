@@ -1,49 +1,85 @@
 # Responsive Mobil Magaza
 
-Koyu tema ile hazirlanmis, mobil-first yaklasima sahip proje sunum arayuzu.
+Responsive Mobil Magaza, hocanin istedigi 3 haftalik teslim planina uygun olarak hazirlanmis mobil-first bir e-ticaret arayuzudur. Proje; urun listesi, urun detay alani ve sepet deneyimini tek sayfa uzerinde responsive, hizli ve erisilebilir bir yapiyla sunar.
 
-## Icerik
+## Kullanilan Teknolojiler
 
-- Responsive mobil magaza proje karti
-- 3 haftalik proje takvimi
-- H1 / H2 / H3 surec gostergesi
-- Degerlendirme kriterleri satiri
-- Vite + React tabanli hizli gelistirme ortami
+- HTML5
+- CSS3
+- Tailwind CSS
+- JavaScript
+- Vite
+
+## Proje Ozellikleri
+
+- Mobil-first responsive tasarim
+- Urun listesi bolumu
+- Urun detay paneli
+- Sepete ekleme / cikarma islemleri
+- Toplam fiyat hesaplama
+- Lazy loading kullanan urun gorselleri
+- Semantik HTML ve erisilebilirlik etiketleri
+- Koyu tema modern arayuz
+
+## Proje Yapisi
+
+```text
+Responsive-Mobil-Magaza/
+|- index.html
+|- styles.css
+|- app.js
+|- README.md
+|- PRESENTATION_NOTES.md
+|- package.json
+```
 
 ## Visual Studio Code'da Calistirma
 
-1. Visual Studio Code ile bu klasoru ac.
-2. VS Code icinde `Terminal > New Terminal` menusuyle terminal ac.
-3. Asagidaki komutu bir kez calistir:
+1. Repoyu bilgisayarina indir veya klonla.
+2. Visual Studio Code ile proje klasorunu ac.
+3. Ust menuden `Terminal > New Terminal` sec.
+4. Asagidaki komutu calistir:
 
    ```bash
    npm install
    ```
 
-4. Ardindan gelistirme sunucusunu baslat:
+5. Ardindan gelistirme sunucusunu baslat:
 
    ```bash
    npm run dev
    ```
 
-5. Terminalde sana bir yerel adres verilecek. Genelde soyle olur:
+6. Terminal sana genelde su adrese benzer bir link verir:
 
    ```bash
    http://localhost:5173
    ```
 
-6. Bu adresi tarayicida acarak projeyi goruntule.
+7. Bu adresi tarayicida ac ve projeyi incele.
 
 ## Diger Komutlar
 
-- Uretim paketi almak icin:
+Uretim build'i almak icin:
 
-  ```bash
-  npm run build
-  ```
+```bash
+npm run build
+```
 
-- Build onizlemesi icin:
+Build ciktisini yerelde onizlemek icin:
 
-  ```bash
-  npm run preview
-  ```
+```bash
+npm run preview
+```
+
+## Lighthouse ve Performans Notlari
+
+- Gorseller `loading="lazy"` ile yuklenir.
+- Sayfada semantik bolumler (`header`, `main`, `section`, `article`, `aside`, `footer`) kullanilir.
+- Kontrastli renk paleti tercih edilmistir.
+- Butonlar ve etkilesimli alanlarda `aria-label` kullanilmistir.
+- Vitrin verileri hafif tutulmustur; gereksiz kutuphane kullanimi azaltılmistir.
+
+## Sunum Icin Kisa Ozet
+
+Sunumda anlatmak icin hazir notlar `PRESENTATION_NOTES.md` dosyasina eklenmistir.
