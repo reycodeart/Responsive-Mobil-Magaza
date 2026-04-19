@@ -81,6 +81,7 @@ const products = [
 
 const state = {
   selectedProductId: products[0].id,
+  activeFilter: 'all',
   cart: [],
 }
 
@@ -92,14 +93,19 @@ const currency = new Intl.NumberFormat('tr-TR', {
 
 const productGrid = document.querySelector('#product-grid')
 const detailPanel = document.querySelector('#product-detail')
-const cartList = document.querySelector('#cart-list')
-const cartEmpty = document.querySelector('#cart-empty')
-const subtotalElement = document.querySelector('#cart-subtotal')
-const countElement = document.querySelector('#cart-count')
-const cartBadge = document.querySelector('#cart-badge')
-const currentYear = document.querySelector('#current-year')
+const cartList = document.querySelector('#cart-items')
+const subtotalElement = document.querySelector('#subtotal')
+const grandTotalElement = document.querySelector('#grand-total')
+const cartBadge = document.querySelector('#cart-count-badge')
+const filterButtons = document.querySelectorAll('.filter-chip')
 
-currentYear.textContent = new Date().getFullYear()
+const categoryMap = {
+  phone: 'Akilli Telefon',
+  watch: 'Akilli Saat',
+  audio: 'Kulaklik',
+  accessory: 'Aksesuar',
+  tablet: 'Tablet',
+}
 
 const getSelectedProduct = () =>
   products.find((product) => product.id === state.selectedProductId) ?? products[0]
@@ -120,10 +126,15 @@ const getCartSummary = () => {
   return { items, totalItems, subtotal }
 }
 
+const getVisibleProducts = () => {
+  if (state.activeFilter === 'all') return products
+  return products.filter((product) => product.category === categoryMap[state.activeFilter])
+}
+
 const renderProducts = () => {
   productGrid.innerHTML = ''
 
-  products.forEach((product) => {
+  getVisibleProducts().forEach((product) => {
     const card = document.createElement('article')
     card.className =
       'group flex h-full flex-col overflow-hidden rounded-[28px] border border-white/10 bg-slate-900/80 shadow-soft'
@@ -265,11 +276,12 @@ const updateQuantity = (productId, change) => {
 const renderCart = () => {
   const { items, totalItems, subtotal } = getCartSummary()
 
-  countElement.textContent = totalItems
   cartBadge.textContent = `${totalItems} urun`
   subtotalElement.textContent = currency.format(subtotal)
+  grandTotalElement.textContent = currency.format(subtotal)
 
   cartList.innerHTML = ''
+  const cartEmpty = document.querySelector('#cart-empty')
 
   if (items.length === 0) {
     cartEmpty.classList.remove('hidden')
@@ -338,6 +350,30 @@ const renderCart = () => {
     cartList.appendChild(li)
   })
 }
+
+const setFilter = (filter) => {
+  state.activeFilter = filter
+
+  filterButtons.forEach((button) => {
+    const isActive = button.dataset.filter === filter
+    button.classList.toggle('is-active', isActive)
+    button.setAttribute('aria-pressed', String(isActive))
+  })
+
+  const visibleProducts = getVisibleProducts()
+  if (!visibleProducts.some((product) => product.id === state.selectedProductId)) {
+    state.selectedProductId = visibleProducts[0]?.id ?? products[0].id
+  }
+
+  renderProducts()
+  renderDetails()
+}
+
+filterButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    setFilter(button.dataset.filter)
+  })
+})
 
 renderProducts()
 renderDetails()

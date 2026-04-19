@@ -1,82 +1,216 @@
-@import "tailwindcss";
-
-@theme {
-  --color-ink-950: #07111d;
-  --color-ink-900: #0d1728;
-  --color-ink-800: #162235;
-  --color-surface: #edf3ff;
-  --color-brand-500: #7c3aed;
-  --color-brand-400: #8b5cf6;
-  --color-brand-300: #a78bfa;
-  --color-accent-400: #22c55e;
-  --color-accent-300: #4ade80;
+html {
+  scroll-behavior: smooth;
 }
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    min-width: 320px;
-    font-family:
-      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      sans-serif;
-    background:
-      radial-gradient(circle at top, rgba(124, 58, 237, 0.2), transparent 32%),
-      linear-gradient(180deg, #07111d 0%, #0b1526 100%);
-    color: #edf3ff;
-  }
-
-  img {
-    display: block;
-    max-width: 100%;
-  }
-
-  button {
-    cursor: pointer;
-  }
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
-@layer components {
-  .shell {
-    @apply mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8;
-  }
+img {
+  display: block;
+  max-width: 100%;
+}
 
-  .panel {
-    @apply rounded-[28px] border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(4,9,19,0.28)] backdrop-blur;
-  }
+button {
+  cursor: pointer;
+}
 
-  .nav-link {
-    @apply rounded-full px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-white/10 hover:text-white;
-  }
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 20;
+  transform: translateY(-220%);
+  border-radius: 9999px;
+  background: #22d3ee;
+  color: #020617;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  transition: transform 160ms ease;
+}
 
-  .badge {
-    @apply inline-flex items-center rounded-full border border-violet-400/40 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-violet-200;
-  }
+.skip-link:focus {
+  transform: translateY(0);
+}
 
-  .cta-primary {
-    @apply inline-flex items-center justify-center rounded-2xl bg-violet-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-950/30 transition hover:-translate-y-0.5 hover:bg-violet-400;
-  }
+.shadow-soft {
+  box-shadow: 0 20px 60px rgba(4, 9, 19, 0.28);
+}
 
-  .cta-secondary {
-    @apply inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:-translate-y-0.5 hover:border-violet-300/60 hover:bg-white/10;
-  }
+.week-card {
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 28px;
+  padding: 3rem 1.5rem 1.5rem;
+}
 
-  .product-card {
-    @apply panel overflow-hidden p-4;
-  }
+.week-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 8px;
+}
 
-  .spec-chip {
-    @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200;
-  }
+.week-card--teal {
+  border-color: rgb(34 211 238 / 0.9);
+  background: rgb(8 47 73 / 0.45);
+}
 
-  .feature-item {
-    @apply flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4;
-  }
+.week-card--teal::before {
+  background: rgb(34 211 238 / 0.9);
+}
 
-  .cart-row {
-    @apply flex items-center justify-between gap-3 border-b border-white/10 py-4 last:border-b-0;
-  }
+.week-card--purple {
+  border-color: rgb(167 139 250 / 0.9);
+  background: rgb(76 29 149 / 0.38);
+}
+
+.week-card--purple::before {
+  background: rgb(167 139 250 / 0.9);
+}
+
+.week-card--orange {
+  border-color: rgb(251 191 36 / 0.9);
+  background: rgb(120 53 15 / 0.4);
+}
+
+.week-card--orange::before {
+  background: rgb(251 191 36 / 0.9);
+}
+
+.week-number {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto;
+  border-radius: 9999px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.week-label {
+  margin: 1.25rem 0 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.week-title {
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-size: 2rem;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #fff;
+}
+
+.week-list {
+  margin: 1.5rem 0 0;
+  padding: 1.5rem 0 0;
+  list-style: none;
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+}
+
+.week-list li {
+  position: relative;
+  padding-left: 1.75rem;
+  color: rgb(203 213 225);
+  line-height: 1.75;
+}
+
+.week-list li + li {
+  margin-top: 1rem;
+}
+
+.week-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+}
+
+.week-card--teal .week-list li::before {
+  background: rgb(34 211 238 / 0.9);
+}
+
+.week-card--purple .week-list li::before {
+  background: rgb(167 139 250 / 0.9);
+}
+
+.week-card--orange .week-list li::before {
+  background: rgb(251 191 36 / 0.9);
+}
+
+.phase-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 0.05);
+  padding: 1rem;
+  color: rgb(203 213 225);
+}
+
+.phase-dot {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  border-radius: 9999px;
+  background: rgb(167 139 250);
+}
+
+.score-item {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgb(226 232 240);
+}
+
+.filter-chip {
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.05);
+  padding: 0.625rem 1rem;
+  color: rgb(226 232 240);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    color 160ms ease;
+}
+
+.filter-chip:hover {
+  transform: translateY(-1px);
+  border-color: rgb(103 232 249 / 0.4);
+  background: rgb(255 255 255 / 0.1);
+  color: #fff;
+}
+
+.filter-chip.is-active {
+  border-color: rgb(103 232 249 / 0.5);
+  background: rgb(103 232 249);
+  color: rgb(2 6 23);
+}
+
+.detail-shell:empty::before {
+  content: 'Detay yukleniyor...';
+  display: block;
+  border: 1px dashed rgb(255 255 255 / 0.1);
+  border-radius: 1.5rem;
+  background: rgb(255 255 255 / 0.05);
+  padding: 2.5rem 1.25rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgb(148 163 184);
 }
