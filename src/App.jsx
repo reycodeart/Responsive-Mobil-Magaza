@@ -1,253 +1,137 @@
-import { useMemo, useState } from 'react'
 import './App.css'
 
-const categories = ['Tumu', 'Telefon', 'Kulaklik', 'Saat', 'Aksesuar']
-
-const products = [
+const weeks = [
   {
-    id: 1,
-    name: 'Nova X Akilli Telefon',
-    category: 'Telefon',
-    price: 28999,
-    oldPrice: 31999,
-    rating: 4.8,
-    badge: 'Yeni',
-    color: 'var(--card-phone)',
+    number: '1',
+    label: 'Hafta 1',
+    title: 'Analiz & Planlama',
+    theme: 'teal',
+    items: [
+      'Konu arastirmasi ve kapsam belirleme',
+      'Kullanilacak arac ve teknolojilerin secimi',
+      'Wireframe / akis diyagrami / is modeli taslagi',
+      'Hafta sonu: Danisman onayi',
+    ],
   },
   {
-    id: 2,
-    name: 'Pulse Buds Pro',
-    category: 'Kulaklik',
-    price: 4999,
-    oldPrice: 5799,
-    rating: 4.7,
-    badge: 'Cok Satan',
-    color: 'var(--card-earbuds)',
+    number: '2',
+    label: 'Hafta 2',
+    title: 'Gelistirme & Uygulama',
+    theme: 'purple',
+    items: [
+      'Asil urunun / analizin / uygulamanin gelistirilmesi',
+      'Ara kontrol: Ilerleme paylasimi',
+      'Testler ve gozden gecirme',
+      'Hata duzeltme ve iyilestirme',
+    ],
   },
   {
-    id: 3,
-    name: 'Flow Watch S',
-    category: 'Saat',
-    price: 7999,
-    oldPrice: 8999,
-    rating: 4.6,
-    badge: 'Yeni',
-    color: 'var(--card-watch)',
-  },
-  {
-    id: 4,
-    name: 'MagSafe Powerbank',
-    category: 'Aksesuar',
-    price: 2499,
-    oldPrice: 2999,
-    rating: 4.5,
-    badge: 'Indirim',
-    color: 'var(--card-accessory)',
+    number: '3',
+    label: 'Hafta 3',
+    title: 'Sunum & Teslim',
+    theme: 'orange',
+    items: [
+      'Rapor / dokumantasyon yazimi',
+      'Sunum dosyasinin hazirlanmasi',
+      'Canli sinif sunumu (5-8 dk)',
+      'Peer review ve degerlendirme',
+    ],
   },
 ]
 
-const highlights = [
-  { value: '24 saatte', label: 'kargo teslimi' },
-  { value: '%15', label: 'ilk siparis indirimi' },
-  { value: '4.9/5', label: 'musteri puani' },
+const phases = [
+  'H1: Rol belirleme + arastirma + tasarim',
+  'H2: Gelistirme + ara kontrol',
+  'H3: Entegrasyon + test + sunum',
 ]
 
-const features = [
-  'Mobil odakli hizli arayuz',
-  'Guvenli odeme ve kolay iade',
-  'Lighthouse dostu semantic yapi',
+const scoring = [
+  'Teknik %35',
+  'UX %20',
+  'Sunum %20',
+  'Ekip Katkisi %25',
 ]
 
-const formatPrice = (price) =>
-  new Intl.NumberFormat('tr-TR', {
-    style: 'currency',
-    currency: 'TRY',
-    maximumFractionDigits: 0,
-  }).format(price)
+const stack = ['HTML/CSS', 'Tailwind', 'Lighthouse']
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState('Tumu')
-  const [cartCount, setCartCount] = useState(1)
-
-  const filteredProducts = useMemo(() => {
-    if (selectedCategory === 'Tumu') {
-      return products
-    }
-
-    return products.filter((product) => product.category === selectedCategory)
-  }, [selectedCategory])
-
-  const cartTotal = useMemo(() => {
-    const starterPack = products[0].price + products[1].price
-    return starterPack + cartCount * 499
-  }, [cartCount])
-
   return (
     <div className="app-shell">
-      <header className="hero-section">
-        <div className="hero-copy">
-          <p className="eyebrow">Responsive Mobil Magaza</p>
-          <h1>Mobil deneyime gore tasarlanmis teknoloji magazasi</h1>
-          <p className="hero-text">
-            Telefon, saat ve aksesuar urunlerini tek ekranda kesfet. Hedef,
-            mobil cihazlarda hizli acilan, okunakli ve modern bir magaza arayuzu
-            sunmak.
+      <header className="page-header">
+        <div>
+          <p className="eyebrow">Mobil & Modern</p>
+          <h1>Responsive Mobil Magaza</h1>
+          <p className="intro-text">
+            Mobile-first tasarim; urun listesi, detay sayfasi ve sepet
+            ekranlarini CSS Grid/Flex ile tum cihazlara uyarlayan proje plani.
           </p>
-          <div className="hero-actions">
-            <a className="primary-button" href="#urunler">
-              Urunleri incele
-            </a>
-            <a className="secondary-button" href="#kampanya">
-              Kampanyayi gor
-            </a>
-          </div>
         </div>
-
-        <aside className="hero-card" aria-label="One cikan bilgiler">
-          <div className="hero-card-top">
-            <span className="hero-card-pill">Canli kampanya</span>
-            <strong>Mobil haftasi</strong>
-          </div>
-          <ul className="highlight-list">
-            {highlights.map((item) => (
-              <li key={item.label}>
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mini-cart">
-            <div>
-              <span>Sepet ozeti</span>
-              <strong>{formatPrice(cartTotal)}</strong>
-            </div>
-            <button
-              type="button"
-              aria-label="Sepete bir urun ekle"
-              onClick={() => setCartCount((count) => count + 1)}
-            >
-              +1 urun
-            </button>
-          </div>
-        </aside>
+        <div className="header-note">Cikti: Calisan site + Lighthouse skoru + cihaz testleri</div>
       </header>
 
-      <main>
-        <section className="feature-strip" aria-label="Avantajlar">
-          {features.map((feature) => (
-            <article key={feature} className="feature-item">
-              <span className="feature-dot" aria-hidden="true"></span>
-              <p>{feature}</p>
-            </article>
-          ))}
-        </section>
+      <main className="page-grid">
+        <section className="project-card" aria-label="Proje ozeti karti">
+          <div className="project-card__inner">
+            <p className="project-badge">Mobil &amp; Modern</p>
+            <h2>Responsive Mobil Magaza</h2>
+            <p className="project-copy">
+              Mobile-first tasarim: urun listesi, detay sayfasi ve sepet
+              ekranlarini CSS Grid/Flex ile tum cihazlara uyarla.
+            </p>
 
-        <section className="catalog-section" id="urunler">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">Kategori sec</p>
-              <h2>One cikan urunler</h2>
+            <div className="stack-row" aria-label="Kullanilan teknolojiler">
+              {stack.map((item) => (
+                <span key={item} className="stack-pill">
+                  {item}
+                </span>
+              ))}
             </div>
-            <p className="section-text">
-              Aradigin urune tek dokunusta ulasabilmek icin filtrelemeyi mobil
-              kaydirma davranisina uygun sekilde tasarladik.
+
+            <p className="project-output">
+              Cikti: Calisan site + Lighthouse skoru + cihaz testleri
             </p>
           </div>
+        </section>
 
-          <div className="category-row" role="tablist" aria-label="Urun kategorileri">
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                className={category === selectedCategory ? 'chip active' : 'chip'}
-                role="tab"
-                aria-selected={category === selectedCategory}
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category === 'Tumu' ? 'Tumu' : category}
-              </button>
-            ))}
+        <section className="timeline-section" aria-labelledby="timeline-heading">
+          <div className="timeline-header">
+            <h2 id="timeline-heading">3 Haftalik Proje Takvimi</h2>
+            <p>Tum projeler icin ortak surec yapisi</p>
           </div>
 
-          <div className="product-grid">
-            {filteredProducts.map((product) => (
-              <article className="product-card" key={product.id}>
-                <div
-                  className="product-visual"
-                  style={{ background: product.color }}
-                  aria-hidden="true"
-                >
-                  <span>{product.category}</span>
-                </div>
-
-                <div className="product-body">
-                  <div className="product-meta">
-                    <span className="badge">{product.badge}</span>
-                    <span className="rating">★ {product.rating}</span>
-                  </div>
-                  <h3>{product.name}</h3>
-                  <p className="product-description">
-                    Yuksek performans, premium gorunum ve guncel mobil
-                    ihtiyaclara uygun tasarim.
-                  </p>
-                  <div className="product-pricing">
-                    <strong>{formatPrice(product.price)}</strong>
-                    <span>{formatPrice(product.oldPrice)}</span>
-                  </div>
-                  <button
-                    type="button"
-                    className="add-button"
-                    onClick={() => setCartCount((count) => count + 1)}
-                  >
-                    Sepete ekle
-                  </button>
-                </div>
+          <div className="timeline-grid">
+            {weeks.map((week) => (
+              <article key={week.number} className={`week-card week-card--${week.theme}`}>
+                <div className="week-card__topline" aria-hidden="true"></div>
+                <div className="week-number">{week.number}</div>
+                <p className="week-label">{week.label}</p>
+                <h3>{week.title}</h3>
+                <ul className="week-list">
+                  {week.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
         </section>
-
-        <section className="campaign-section" id="kampanya">
-          <div className="campaign-copy">
-            <p className="eyebrow">Site + Lighthouse odagi</p>
-            <h2>Hiz, erisilebilirlik ve responsive tasarim tek yerde</h2>
-            <p>
-              Bu ekran; semantic baslik yapisi, kontrastli renk kullanimi,
-              buton odak durumlari ve hafif veri modeliyle performans odakli bir
-              teslim sunmak icin hazirlandi.
-            </p>
-          </div>
-
-          <div className="campaign-card">
-            <span className="campaign-badge">Haftanin firsati</span>
-            <strong>2 urun alana ucretsiz kargo</strong>
-            <p>
-              Mobil uygulama benzeri bir deneyim icin sabit alt gezinme, buyuk
-              dokunma alanlari ve tek elle kullanima uygun bosluklar kullanildi.
-            </p>
-            <a href="#alt-menu">Alt menuyu incele</a>
-          </div>
-        </section>
       </main>
 
-      <nav className="bottom-nav" id="alt-menu" aria-label="Alt gezinme">
-        <a href="#root" className="nav-item active">
-          <span>⌂</span>
-          <strong>Ana sayfa</strong>
-        </a>
-        <a href="#urunler" className="nav-item">
-          <span>◫</span>
-          <strong>Kategoriler</strong>
-        </a>
-        <a href="#kampanya" className="nav-item">
-          <span>☆</span>
-          <strong>Kampanya</strong>
-        </a>
-        <button type="button" className="nav-item cart-button">
-          <span>🛒</span>
-          <strong>Sepet ({cartCount})</strong>
-        </button>
-      </nav>
+      <section className="phase-strip" aria-label="Asama takibi">
+        {phases.map((phase) => (
+          <article key={phase} className="phase-item">
+            <span className="phase-dot" aria-hidden="true"></span>
+            <p>{phase}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="score-strip" aria-label="Degerlendirme olcutleri">
+        <strong>Degerlendirme:</strong>
+        {scoring.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
+      </section>
     </div>
   )
 }
