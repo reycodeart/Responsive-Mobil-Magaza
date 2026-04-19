@@ -1,3 +1,10 @@
+import { createIcons, icons } from 'lucide'
+
+const STORAGE_KEYS = {
+  cart: 'responsive-mobile-store-cart',
+  favorites: 'responsive-mobile-store-favorites',
+}
+
 const products = [
   {
     id: 1,
@@ -7,28 +14,44 @@ const products = [
     price: 42999,
     oldPrice: 46999,
     rating: 4.8,
+    badge: 'Yeni',
     image:
       'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80',
-    shortDescription: 'Ince kasa, 16 GB RAM ve gun boyu pil omru sunan premium laptop.',
+    gallery: [
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80',
+    ],
+    shortDescription: 'İnce kasa, 16 GB RAM ve gün boyu pil ömrü sunan premium laptop.',
     details:
-      'Nebula X15; tasarim, ders ve gunluk uretkenlik icin mobil-first odakta secilen ana urunlerden biridir. 120 Hz ekran, hizli SSD ve sessiz sogutma sistemiyle profesyonel kullanim sunar.',
+      'Nebula X15; tasarım, ders ve günlük üretkenlik için mobil-first odakta seçilen ana ürünlerden biridir. 120 Hz ekran, hızlı SSD ve sessiz soğutma sistemiyle profesyonel kullanım sunar.',
     specs: ['15.6 in IPS', '16 GB RAM', '1 TB SSD'],
+    color: 'Gümüş',
+    shipping: 'Yarın kargoda',
     deal: true,
   },
   {
     id: 2,
     brand: 'Pulse',
     name: 'Pulse Air Headphones',
-    category: 'Kulaklik',
+    category: 'Kulaklık',
     price: 3599,
     oldPrice: 4299,
     rating: 4.7,
+    badge: 'Popüler',
     image:
       'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80',
-    shortDescription: 'Aktif gurultu engelleme ve yumusak kulak yastiklari ile net ses.',
+    gallery: [
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=1200&q=80',
+    ],
+    shortDescription: 'Aktif gürültü engelleme ve yumuşak kulak yastıkları ile net ses.',
     details:
-      'Pulse Air, hareket halindeyken muzik ve gorusmeler icin yuksek konfor sunar. Hafif govdesi ve modern tasarimi sayesinde mobil kullanicilarin favorilerinden biridir.',
+      'Pulse Air, hareket halindeyken müzik ve görüşmeler için yüksek konfor sunar. Hafif gövdesi ve modern tasarımı sayesinde mobil kullanıcıların favorilerinden biridir.',
     specs: ['ANC destekli', '32 saat pil', 'Bluetooth 5.3'],
+    color: 'Grafit',
+    shipping: 'Bugün kargoda',
     deal: true,
   },
   {
@@ -39,12 +62,20 @@ const products = [
     price: 28999,
     oldPrice: 31999,
     rating: 4.9,
+    badge: 'Amiral Gemisi',
     image:
       'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
-    shortDescription: 'Gelistirilmis gece modu ve 120 Hz ekranla amiral gemisi deneyimi.',
+    gallery: [
+      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=1200&q=80',
+    ],
+    shortDescription: 'Geliştirilmiş gece modu ve 120 Hz ekranla amiral gemisi deneyimi.',
     details:
-      'Aero S24, tek elle kullanim kolayligi, guclu kamera yapisi ve hizli sarj destekli bataryasiyla modern mobil magazanin temel urunlerinden biri olarak konumlandirildi.',
+      'Aero S24, tek elle kullanım kolaylığı, güçlü kamera yapısı ve hızlı şarj destekli bataryasıyla modern mobil mağazanın temel ürünlerinden biri olarak konumlandırıldı.',
     specs: ['256 GB', '50 MP kamera', '5000 mAh'],
+    color: 'Uzay Siyahı',
+    shipping: 'Aynı gün teslim',
     deal: false,
   },
   {
@@ -55,28 +86,44 @@ const products = [
     price: 38999,
     oldPrice: 41999,
     rating: 4.6,
+    badge: 'Pro',
     image:
       'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1200&q=80',
-    shortDescription: 'Tasarim ve video isleri icin guclu ekran kartli ince laptop.',
+    gallery: [
+      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80',
+    ],
+    shortDescription: 'Tasarım ve video işleri için güçlü ekran kartlı ince laptop.',
     details:
-      'Vertex Creator, daha cok performans arayan kullanicilar icin gelistirildi. Renk dogrulugu yuksek ekran ve hizli coklu gorev performansi sunar.',
+      'Vertex Creator, daha çok performans arayan kullanıcılar için geliştirildi. Renk doğruluğu yüksek ekran ve hızlı çoklu görev performansı sunar.',
     specs: ['14 in OLED', 'RTX seri GPU', '32 GB RAM'],
+    color: 'Koyu Gri',
+    shipping: 'Yarın kargoda',
     deal: false,
   },
   {
     id: 5,
     brand: 'Nova',
     name: 'Nova Buds Pro',
-    category: 'Kulaklik',
+    category: 'Kulaklık',
     price: 2499,
     oldPrice: 2899,
     rating: 4.5,
+    badge: 'Fiyat/Performans',
     image:
       'https://images.unsplash.com/photo-1577174881658-0f30ed549adc?auto=format&fit=crop&w=1200&q=80',
-    shortDescription: 'Kompakt kutu, net mikrofon ve gunluk kullanim icin dengeli ses.',
+    gallery: [
+      'https://images.unsplash.com/photo-1577174881658-0f30ed549adc?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=1200&q=80',
+    ],
+    shortDescription: 'Kompakt kutu, net mikrofon ve günlük kullanım için dengeli ses.',
     details:
-      'Nova Buds Pro, ozellikle ogrenciler ve surekli hareket halinde olan kullanicilar icin optimize edilmis bir TWS kulaklik modelidir.',
-    specs: ['TWS', 'Hizli sarj', 'IPX4'],
+      'Nova Buds Pro, özellikle öğrenciler ve sürekli hareket halinde olan kullanıcılar için optimize edilmiş bir TWS kulaklık modelidir.',
+    specs: ['TWS', 'Hızlı şarj', 'IPX4'],
+    color: 'Beyaz',
+    shipping: 'Bugün kargoda',
     deal: true,
   },
   {
@@ -87,25 +134,61 @@ const products = [
     price: 51999,
     oldPrice: 55999,
     rating: 4.7,
+    badge: 'Premium',
     image:
       'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
-    shortDescription: 'Katlanabilir ekran ve premium hissiyatla gelecek odakli telefon.',
+    gallery: [
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=1200&q=80',
+    ],
+    shortDescription: 'Katlanabilir ekran ve premium hissiyatla gelecek odaklı telefon.',
     details:
-      'Luma Fold Phone, yenilikci tasarim arayan kullanicilar icin secildi. Buyuk ekran deneyimi ve premium malzeme yapisi ile urun detay sayfasinda one cikacak sekilde tasarlandi.',
-    specs: ['Foldable ekran', '512 GB', 'Kablosuz sarj'],
+      'Luma Fold Phone, yenilikçi tasarım arayan kullanıcılar için seçildi. Büyük ekran deneyimi ve premium malzeme yapısı ile ürün detay sayfasında öne çıkacak şekilde tasarlandı.',
+    specs: ['Katlanabilir ekran', '512 GB', 'Kablosuz şarj'],
+    color: 'Gece Mavisi',
+    shipping: 'Ön sipariş',
     deal: false,
   },
 ]
 
-const categories = ['Tumu', 'Telefon', 'Laptop', 'Kulaklik']
+const categories = ['Tümü', 'Telefon', 'Laptop', 'Kulaklık']
+const priceRanges = [
+  { value: 'all', label: 'Tüm fiyatlar' },
+  { value: '0-5000', label: '0 - 5.000 TL' },
+  { value: '5000-30000', label: '5.000 - 30.000 TL' },
+  { value: '30000+', label: '30.000 TL+' },
+]
+
+const readStorage = (key, fallback) => {
+  try {
+    const raw = window.localStorage.getItem(key)
+    return raw ? JSON.parse(raw) : fallback
+  } catch {
+    return fallback
+  }
+}
+
+const writeStorage = (key, value) => {
+  try {
+    window.localStorage.setItem(key, JSON.stringify(value))
+  } catch {
+    // Ignore storage failures.
+  }
+}
 
 const state = {
   route: 'home',
   selectedProductId: products[0].id,
-  activeCategory: 'Tumu',
+  selectedGalleryIndex: 0,
+  activeCategory: 'Tümü',
   searchQuery: '',
-  cart: [],
-  favorites: [],
+  activePriceRange: 'all',
+  onlyDeals: false,
+  onlyFavorites: false,
+  sortBy: 'featured',
+  cart: readStorage(STORAGE_KEYS.cart, []),
+  favorites: readStorage(STORAGE_KEYS.favorites, []),
 }
 
 const currency = new Intl.NumberFormat('tr-TR', {
@@ -124,6 +207,11 @@ currentYear.textContent = new Date().getFullYear()
 
 const getProductById = (productId) =>
   products.find((product) => product.id === Number(productId)) ?? products[0]
+
+const persistState = () => {
+  writeStorage(STORAGE_KEYS.cart, state.cart)
+  writeStorage(STORAGE_KEYS.favorites, state.favorites)
+}
 
 const parseRoute = () => {
   const hash = window.location.hash.replace('#', '')
@@ -156,26 +244,55 @@ const navigateTo = (target) => {
   window.location.hash = target
 }
 
-const getHomeProducts = () =>
-  products.filter(
-    (product) =>
-      state.activeCategory === 'Tumu' || product.category === state.activeCategory,
-  )
-
-const getSearchResults = () => {
-  const query = state.searchQuery.trim().toLowerCase()
-
-  if (!query) {
-    return products
-  }
-
-  return products.filter((product) =>
-    `${product.brand} ${product.name} ${product.category}`
-      .toLowerCase()
-      .includes(query),
-  )
+const isWithinRange = (price, range) => {
+  if (range === 'all') return true
+  if (range === '0-5000') return price <= 5000
+  if (range === '5000-30000') return price > 5000 && price <= 30000
+  if (range === '30000+') return price > 30000
+  return true
 }
 
+const matchesSearch = (product) => {
+  const query = state.searchQuery.trim().toLocaleLowerCase('tr-TR')
+
+  if (!query) return true
+
+  return `${product.brand} ${product.name} ${product.category} ${product.badge} ${product.color}`
+    .toLocaleLowerCase('tr-TR')
+    .includes(query)
+}
+
+const getFilteredProducts = (includeCategory = true) => {
+  let filtered = products.filter((product) => {
+    const categoryMatch =
+      !includeCategory ||
+      state.activeCategory === 'Tümü' ||
+      product.category === state.activeCategory
+
+    return (
+      categoryMatch &&
+      matchesSearch(product) &&
+      isWithinRange(product.price, state.activePriceRange) &&
+      (!state.onlyDeals || product.deal) &&
+      (!state.onlyFavorites || state.favorites.includes(product.id))
+    )
+  })
+
+  if (state.sortBy === 'price-asc') {
+    filtered = [...filtered].sort((a, b) => a.price - b.price)
+  } else if (state.sortBy === 'price-desc') {
+    filtered = [...filtered].sort((a, b) => b.price - a.price)
+  } else if (state.sortBy === 'rating') {
+    filtered = [...filtered].sort((a, b) => b.rating - a.rating)
+  } else if (state.sortBy === 'featured') {
+    filtered = [...filtered].sort((a, b) => Number(b.deal) - Number(a.deal))
+  }
+
+  return filtered
+}
+
+const getHomeProducts = () => getFilteredProducts(true)
+const getSearchResults = () => getFilteredProducts(false)
 const getDeals = () => products.filter((product) => product.deal)
 
 const getCartSummary = () => {
@@ -214,29 +331,23 @@ const addToCart = (productId) => {
     state.cart.push({ id: productId, quantity: 1 })
   }
 
+  persistState()
   updateCartBadges()
   renderApp()
 }
 
 const updateQuantity = (productId, mode) => {
   const cartItem = state.cart.find((item) => item.id === productId)
+  if (!cartItem) return
 
-  if (!cartItem) {
-    return
-  }
-
-  if (mode === 'increase') {
-    cartItem.quantity += 1
-  }
-
-  if (mode === 'decrease') {
-    cartItem.quantity -= 1
-  }
+  if (mode === 'increase') cartItem.quantity += 1
+  if (mode === 'decrease') cartItem.quantity -= 1
 
   if (mode === 'remove' || cartItem.quantity <= 0) {
     state.cart = state.cart.filter((item) => item.id !== productId)
   }
 
+  persistState()
   updateCartBadges()
   renderApp()
 }
@@ -248,7 +359,14 @@ const toggleFavorite = (productId) => {
     state.favorites.push(productId)
   }
 
+  persistState()
   renderApp()
+}
+
+const openProduct = (productId) => {
+  state.selectedProductId = productId
+  state.selectedGalleryIndex = 0
+  navigateTo(`product/${productId}`)
 }
 
 const productCardMarkup = (product) => {
@@ -256,7 +374,8 @@ const productCardMarkup = (product) => {
 
   return `
     <article class="product-card">
-      <div class="relative aspect-[4/4.7] overflow-hidden bg-slate-800">
+      <div class="product-card__media">
+        <span class="product-chip">${product.badge}</span>
         <button
           type="button"
           class="favorite-button ${isFavorite ? 'is-active' : ''}"
@@ -264,14 +383,14 @@ const productCardMarkup = (product) => {
           data-product-id="${product.id}"
           aria-label="${product.name} favorilere ekle"
         >
-          ${isFavorite ? '♥' : '♡'}
+          <i data-lucide="${isFavorite ? 'heart-off' : 'heart'}"></i>
         </button>
         <button
           type="button"
           class="product-card__button"
           data-action="open-product"
           data-product-id="${product.id}"
-          aria-label="${product.name} urun detayini ac"
+          aria-label="${product.name} ürün detayını aç"
         >
           <img
             src="${product.image}"
@@ -283,7 +402,10 @@ const productCardMarkup = (product) => {
         </button>
       </div>
       <div class="space-y-3 p-4">
-        <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-300">${product.brand}</p>
+        <div class="flex items-center justify-between gap-2">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-300">${product.brand}</p>
+          <span class="text-xs text-slate-400">${product.rating} ★</span>
+        </div>
         <button
           type="button"
           class="text-left"
@@ -303,7 +425,7 @@ const productCardMarkup = (product) => {
             class="rounded-full bg-gradient-to-r from-cyan-300 to-violet-400 px-4 py-2 text-xs font-semibold text-slate-950 transition hover:-translate-y-0.5"
             data-action="add-to-cart"
             data-product-id="${product.id}"
-            aria-label="${product.name} urununu sepete ekle"
+            aria-label="${product.name} ürününü sepete ekle"
           >
             Ekle
           </button>
@@ -317,10 +439,11 @@ const dealBannerMarkup = () => {
   const deal = getDeals()[0]
 
   return `
-    <section class="hero-banner rounded-[30px] border border-white/10 bg-gradient-to-r from-violet-600/20 via-slate-900 to-cyan-500/10 p-5 shadow-soft">
-      <div class="flex items-start justify-between gap-4">
-        <div class="max-w-[240px]">
-          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300">Gunun Firsatlari</p>
+    <section class="hero-banner premium-card p-5">
+      <div class="hero-banner__overlay"></div>
+      <div class="relative flex items-start justify-between gap-4">
+        <div class="max-w-[260px]">
+          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300">Günün Fırsatı</p>
           <h1 class="mt-3 text-3xl font-bold leading-tight text-white">${deal.name}</h1>
           <p class="mt-3 text-sm leading-7 text-slate-300">${deal.shortDescription}</p>
           <div class="mt-5 flex items-center gap-3">
@@ -330,19 +453,102 @@ const dealBannerMarkup = () => {
               data-action="open-product"
               data-product-id="${deal.id}"
             >
-              Incele
+              İncele
             </button>
             <span class="text-sm font-semibold text-violet-200">${currency.format(deal.price)}</span>
           </div>
         </div>
-        <div class="rounded-3xl border border-white/10 bg-slate-950/60 px-4 py-3 text-right">
-          <p class="text-xs uppercase tracking-[0.22em] text-slate-500">Canli Sepet</p>
+        <div class="hero-stat-card">
+          <p class="text-xs uppercase tracking-[0.22em] text-slate-500">Canlı Sepet</p>
           <strong class="text-2xl text-white">${getCartSummary().itemCount}</strong>
+          <span class="mt-2 inline-flex text-xs text-slate-400">Ücretsiz kargo avantajı</span>
         </div>
       </div>
     </section>
   `
 }
+
+const filtersPanelMarkup = () => `
+  <section class="filter-panel">
+    <div class="space-y-3">
+      <div class="flex items-center justify-between gap-3">
+        <h2 class="text-lg font-semibold text-white">Akıllı Filtreler</h2>
+        <button
+          type="button"
+          class="text-sm font-semibold text-cyan-300"
+          data-action="reset-filters"
+        >
+          Sıfırla
+        </button>
+      </div>
+      <div class="category-scroller flex gap-3 overflow-x-auto pb-2">
+        ${categories
+          .map(
+            (category) => `
+              <button
+                type="button"
+                class="category-pill ${state.activeCategory === category ? 'is-active' : ''}"
+                data-action="set-category"
+                data-category="${category}"
+                aria-pressed="${String(state.activeCategory === category)}"
+              >
+                ${category}
+              </button>
+            `,
+          )
+          .join('')}
+      </div>
+    </div>
+
+    <div class="grid gap-3 sm:grid-cols-2">
+      <label class="filter-select">
+        <span>Fiyat aralığı</span>
+        <select data-filter-select="price">
+          ${priceRanges
+            .map(
+              (option) => `
+                <option value="${option.value}" ${state.activePriceRange === option.value ? 'selected' : ''}>
+                  ${option.label}
+                </option>
+              `,
+            )
+            .join('')}
+        </select>
+      </label>
+
+      <label class="filter-select">
+        <span>Sıralama</span>
+        <select data-filter-select="sort">
+          <option value="featured" ${state.sortBy === 'featured' ? 'selected' : ''}>Öne çıkanlar</option>
+          <option value="price-asc" ${state.sortBy === 'price-asc' ? 'selected' : ''}>Fiyat artan</option>
+          <option value="price-desc" ${state.sortBy === 'price-desc' ? 'selected' : ''}>Fiyat azalan</option>
+          <option value="rating" ${state.sortBy === 'rating' ? 'selected' : ''}>En yüksek puan</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="filter-toggle-row">
+      <button
+        type="button"
+        class="toggle-chip ${state.onlyDeals ? 'is-active' : ''}"
+        data-action="toggle-deals"
+        aria-pressed="${String(state.onlyDeals)}"
+      >
+        <i data-lucide="badge-percent"></i>
+        <span>Sadece fırsatlar</span>
+      </button>
+      <button
+        type="button"
+        class="toggle-chip ${state.onlyFavorites ? 'is-active' : ''}"
+        data-action="toggle-favorites"
+        aria-pressed="${String(state.onlyFavorites)}"
+      >
+        <i data-lucide="heart"></i>
+        <span>Sadece favoriler</span>
+      </button>
+    </div>
+  </section>
+`
 
 const homeViewMarkup = () => {
   const visibleProducts = getHomeProducts()
@@ -350,47 +556,21 @@ const homeViewMarkup = () => {
   return `
     <section class="space-y-6">
       ${dealBannerMarkup()}
-
-      <section aria-labelledby="categories-heading" class="space-y-4">
-        <div class="flex items-center justify-between gap-3">
-          <h2 id="categories-heading" class="text-xl font-semibold text-white">Kategoriler</h2>
-          <button
-            type="button"
-            class="text-sm font-semibold text-cyan-300"
-            data-action="go-search"
-          >
-            Aramaya git
-          </button>
-        </div>
-        <div class="category-scroller flex gap-3 overflow-x-auto pb-2">
-          ${categories
-            .map(
-              (category) => `
-                <button
-                  type="button"
-                  class="category-pill ${state.activeCategory === category ? 'is-active' : ''}"
-                  data-action="set-category"
-                  data-category="${category}"
-                  aria-pressed="${String(state.activeCategory === category)}"
-                >
-                  ${category}
-                </button>
-              `,
-            )
-            .join('')}
-        </div>
-      </section>
+      ${filtersPanelMarkup()}
 
       <section aria-labelledby="products-heading" class="space-y-4">
         <div class="flex items-center justify-between gap-3">
-          <h2 id="products-heading" class="text-xl font-semibold text-white">Urun Listesi</h2>
-          <span class="text-sm text-slate-400">${visibleProducts.length} urun</span>
+          <div>
+            <h2 id="products-heading" class="text-xl font-semibold text-white">Ürün Listesi</h2>
+            <p class="mt-1 text-sm text-slate-400">2 sütunlu mobil-first ürün ızgarası</p>
+          </div>
+          <span class="text-sm text-slate-400">${visibleProducts.length} ürün</span>
         </div>
         ${
           visibleProducts.length === 0
             ? `
               <div class="empty-state">
-                Secili kategoride urun bulunamadi.
+                Seçili filtrelere uygun ürün bulunamadı.
               </div>
             `
             : `
@@ -407,6 +587,7 @@ const homeViewMarkup = () => {
 const productDetailMarkup = () => {
   const product = getProductById(state.selectedProductId)
   const isFavorite = state.favorites.includes(product.id)
+  const activeImage = product.gallery[state.selectedGalleryIndex] ?? product.image
 
   return `
     <section class="space-y-5">
@@ -415,41 +596,82 @@ const productDetailMarkup = () => {
         class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-200"
         data-action="go-home"
       >
-        ← Ana sayfaya don
+        <i data-lucide="arrow-left"></i>
+        <span>Ana sayfaya dön</span>
       </button>
 
-      <article class="overflow-hidden rounded-[32px] border border-white/10 bg-slate-900/85 shadow-soft">
-        <div class="relative aspect-[4/4.3] overflow-hidden bg-slate-800">
-          <img
-            src="${product.image}"
-            alt="${product.name}"
-            class="h-full w-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-          <button
-            type="button"
-            class="favorite-button ${isFavorite ? 'is-active' : ''}"
-            data-action="favorite"
-            data-product-id="${product.id}"
-            aria-label="${product.name} favorilere ekle"
-          >
-            ${isFavorite ? '♥' : '♡'}
-          </button>
+      <article class="premium-card overflow-hidden">
+        <div class="detail-hero">
+          <div class="relative aspect-[4/4.2] overflow-hidden bg-slate-800">
+            <img
+              src="${activeImage}"
+              alt="${product.name}"
+              class="h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <button
+              type="button"
+              class="favorite-button ${isFavorite ? 'is-active' : ''}"
+              data-action="favorite"
+              data-product-id="${product.id}"
+              aria-label="${product.name} favorilere ekle"
+            >
+              <i data-lucide="${isFavorite ? 'heart-off' : 'heart'}"></i>
+            </button>
+          </div>
+
+          <div class="gallery-strip">
+            ${product.gallery
+              .map(
+                (image, index) => `
+                  <button
+                    type="button"
+                    class="gallery-thumb ${state.selectedGalleryIndex === index ? 'is-active' : ''}"
+                    data-action="select-gallery"
+                    data-gallery-index="${index}"
+                    aria-label="${product.name} için ${index + 1}. görseli aç"
+                  >
+                    <img src="${image}" alt="${product.name} görsel ${index + 1}" loading="lazy" decoding="async" />
+                  </button>
+                `,
+              )
+              .join('')}
+          </div>
         </div>
 
         <div class="space-y-5 p-5">
-          <div class="space-y-2">
-            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">${product.brand}</p>
-            <h1 class="text-3xl font-bold leading-tight text-white">${product.name}</h1>
-            <div class="flex items-center gap-3 text-sm text-slate-400">
-              <span>${product.category}</span>
-              <span>•</span>
-              <span>${product.rating} puan</span>
+          <div class="detail-heading-row">
+            <div class="space-y-2">
+              <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">${product.brand}</p>
+              <h1 class="text-3xl font-bold leading-tight text-white">${product.name}</h1>
+              <div class="flex items-center gap-3 text-sm text-slate-400">
+                <span>${product.category}</span>
+                <span>•</span>
+                <span>${product.rating} puan</span>
+                <span>•</span>
+                <span>${product.color}</span>
+              </div>
             </div>
+            <span class="product-chip">${product.badge}</span>
           </div>
 
           <p class="text-sm leading-7 text-slate-300">${product.details}</p>
+
+          <div class="detail-meta-grid">
+            <div class="detail-meta-card">
+              <span>Teslimat</span>
+              <strong>${product.shipping}</strong>
+            </div>
+            <div class="detail-meta-card">
+              <span>Renk</span>
+              <strong>${product.color}</strong>
+            </div>
+            <div class="detail-meta-card">
+              <span>Kampanya</span>
+              <strong>${product.deal ? 'Aktif' : 'Standart'}</strong>
+            </div>
+          </div>
 
           <div class="grid grid-cols-3 gap-3">
             ${product.specs
@@ -475,7 +697,7 @@ const productDetailMarkup = () => {
                 class="rounded-full bg-gradient-to-r from-cyan-300 to-violet-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5"
                 data-action="add-to-cart"
                 data-product-id="${product.id}"
-                aria-label="${product.name} urununu sepete ekle"
+                aria-label="${product.name} ürününü sepete ekle"
               >
                 Sepete Ekle
               </button>
@@ -498,7 +720,7 @@ const cartViewMarkup = () => {
           <h1 class="mt-2 text-3xl font-bold text-white">Sepetim</h1>
         </div>
         <span class="rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-2 text-sm font-semibold text-amber-200">
-          ${items.length} cesit
+          ${items.length} çeşit
         </span>
       </div>
 
@@ -506,16 +728,16 @@ const cartViewMarkup = () => {
         items.length === 0
           ? `
             <div class="empty-state text-center">
-              <p class="text-lg font-semibold text-white">Sepetin bos</p>
+              <p class="text-lg font-semibold text-white">Sepetin boş</p>
               <p class="mt-2 text-sm leading-7 text-slate-400">
-                Urun kartlarindan veya urun detay sayfasindan urun ekleyerek sepetini doldurabilirsin.
+                Ürün kartlarından veya ürün detay sayfasından ürün ekleyerek sepetini doldurabilirsin.
               </p>
               <button
                 type="button"
                 class="mt-4 rounded-full bg-gradient-to-r from-cyan-300 to-violet-400 px-4 py-2 text-sm font-semibold text-slate-950"
                 data-action="go-home"
               >
-                Alisverise don
+                Alışverişe dön
               </button>
             </div>
           `
@@ -524,7 +746,7 @@ const cartViewMarkup = () => {
               ${items
                 .map(
                   (item) => `
-                    <article class="cart-item p-4">
+                    <article class="cart-item premium-card p-4">
                       <div class="flex gap-4">
                         <img
                           src="${item.image}"
@@ -546,7 +768,7 @@ const cartViewMarkup = () => {
                                 type="button"
                                 data-action="decrease"
                                 data-product-id="${item.id}"
-                                aria-label="${item.name} miktarini azalt"
+                                aria-label="${item.name} miktarını azalt"
                               >
                                 -
                               </button>
@@ -556,7 +778,7 @@ const cartViewMarkup = () => {
                                 type="button"
                                 data-action="increase"
                                 data-product-id="${item.id}"
-                                aria-label="${item.name} miktarini artir"
+                                aria-label="${item.name} miktarını artır"
                               >
                                 +
                               </button>
@@ -567,7 +789,7 @@ const cartViewMarkup = () => {
                               data-action="remove"
                               data-product-id="${item.id}"
                             >
-                              Kaldir
+                              Kaldır
                             </button>
                           </div>
                         </div>
@@ -584,7 +806,7 @@ const cartViewMarkup = () => {
                 </div>
                 <div class="mt-3 flex items-center justify-between text-sm text-slate-400">
                   <span>Kargo</span>
-                  <strong class="text-base text-white">Ucretsiz</strong>
+                  <strong class="text-base text-white">Ücretsiz</strong>
                 </div>
                 <div class="mt-4 h-px bg-white/10"></div>
                 <div class="mt-4 flex items-center justify-between">
@@ -595,7 +817,7 @@ const cartViewMarkup = () => {
                   type="button"
                   class="mt-5 w-full rounded-2xl bg-gradient-to-r from-cyan-300 to-violet-400 px-4 py-3 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5"
                 >
-                  Odemeye Gec
+                  Ödemeye Geç
                 </button>
               </section>
             </div>
@@ -612,29 +834,34 @@ const searchViewMarkup = () => {
     <section class="space-y-5">
       <div>
         <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">Search</p>
-        <h1 class="mt-2 text-3xl font-bold text-white">Urun Ara</h1>
+        <h1 class="mt-2 text-3xl font-bold text-white">Ürün Ara</h1>
         <p class="mt-2 text-sm leading-7 text-slate-400">
-          Marka, kategori veya urun adi yaz. Sonuclar sayfa yenilenmeden aninda guncellenir.
+          Marka, kategori veya ürün adı yaz. Sonuçlar sayfa yenilenmeden anında güncellenir.
         </p>
       </div>
 
-      <div class="search-result-card p-4">
-        <label class="sr-only" for="search-input-inner">Urun ara</label>
-        <input
-          id="search-input-inner"
-          data-search-field
-          class="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-white outline-none placeholder:text-slate-500 focus:border-cyan-300/50"
-          type="search"
-          value="${state.searchQuery}"
-          placeholder="Laptop, telefon veya marka ara..."
-        />
+      <div class="premium-card p-4">
+        <label class="sr-only" for="search-input-inner">Ürün ara</label>
+        <div class="search-box">
+          <i data-lucide="search"></i>
+          <input
+            id="search-input-inner"
+            data-search-field
+            class="w-full bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
+            type="search"
+            value="${state.searchQuery}"
+            placeholder="Laptop, telefon veya marka ara..."
+          />
+        </div>
       </div>
+
+      ${filtersPanelMarkup()}
 
       ${
         results.length === 0
           ? `
             <div class="empty-state">
-              Aramana uygun urun bulunamadi. Farkli bir anahtar kelime dene.
+              Aramana uygun ürün bulunamadı. Farklı bir anahtar kelime dene.
             </div>
           `
           : `
@@ -654,17 +881,17 @@ const profileViewMarkup = () => {
     <section class="space-y-5">
       <div>
         <p class="text-xs font-semibold uppercase tracking-[0.24em] text-violet-300">Profile</p>
-        <h1 class="mt-2 text-3xl font-bold text-white">Profil & Ozet</h1>
+        <h1 class="mt-2 text-3xl font-bold text-white">Profil & Özet</h1>
       </div>
 
-      <article class="profile-card p-5">
+      <article class="premium-card p-5">
         <div class="flex items-center gap-4">
           <div class="grid h-16 w-16 place-items-center rounded-3xl bg-gradient-to-br from-cyan-300 to-violet-400 text-xl font-bold text-slate-950">
             RM
           </div>
           <div>
-            <h2 class="text-xl font-semibold text-white">Responsive Kullanici</h2>
-            <p class="text-sm text-slate-400">Mobil-first magaza prototipi kullanicisi</p>
+            <h2 class="text-xl font-semibold text-white">Responsive Kullanıcı</h2>
+            <p class="text-sm text-slate-400">Premium mobil mağaza deneyimi</p>
           </div>
         </div>
 
@@ -674,18 +901,18 @@ const profileViewMarkup = () => {
             <strong class="mt-2 block text-2xl text-white">${state.favorites.length}</strong>
           </div>
           <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <p class="text-sm text-slate-400">Sepetteki urun</p>
+            <p class="text-sm text-slate-400">Sepetteki ürün</p>
             <strong class="mt-2 block text-2xl text-white">${getCartSummary().itemCount}</strong>
           </div>
         </div>
 
         <div class="mt-6">
-          <h3 class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-400">Favori urunler</h3>
+          <h3 class="text-sm font-semibold uppercase tracking-[0.22em] text-slate-400">Favori ürünler</h3>
           ${
             favoriteProducts.length === 0
               ? `
                 <div class="empty-state mt-3">
-                  Henuz favori urun eklemedin.
+                  Henüz favori ürün eklemedin.
                 </div>
               `
               : `
@@ -695,7 +922,7 @@ const profileViewMarkup = () => {
                       (product) => `
                         <button
                           type="button"
-                          class="search-result-card flex w-full items-center gap-4 p-3 text-left"
+                          class="premium-card flex w-full items-center gap-4 p-3 text-left"
                           data-action="open-product"
                           data-product-id="${product.id}"
                         >
@@ -724,22 +951,10 @@ const profileViewMarkup = () => {
 }
 
 const renderView = () => {
-  if (state.route === 'product') {
-    return productDetailMarkup()
-  }
-
-  if (state.route === 'cart') {
-    return cartViewMarkup()
-  }
-
-  if (state.route === 'search') {
-    return searchViewMarkup()
-  }
-
-  if (state.route === 'profile') {
-    return profileViewMarkup()
-  }
-
+  if (state.route === 'product') return productDetailMarkup()
+  if (state.route === 'cart') return cartViewMarkup()
+  if (state.route === 'search') return searchViewMarkup()
+  if (state.route === 'profile') return profileViewMarkup()
   return homeViewMarkup()
 }
 
@@ -763,11 +978,16 @@ const syncRoute = () => {
   }
 }
 
+const renderIcons = () => {
+  createIcons({ icons })
+}
+
 const renderApp = () => {
   syncRoute()
   appView.innerHTML = renderView()
   updateCartBadges()
   updateRouteButtons()
+  renderIcons()
 
   if (state.route === 'search') {
     const searchField = document.querySelector('[data-search-field]')
@@ -782,12 +1002,9 @@ const renderApp = () => {
 
 appView.addEventListener('click', (event) => {
   const actionTarget = event.target.closest('[data-action]')
+  if (!actionTarget) return
 
-  if (!actionTarget) {
-    return
-  }
-
-  const { action, productId, category } = actionTarget.dataset
+  const { action, productId, category, galleryIndex } = actionTarget.dataset
   const id = Number(productId)
 
   if (action === 'set-category') {
@@ -796,8 +1013,7 @@ appView.addEventListener('click', (event) => {
   }
 
   if (action === 'open-product') {
-    state.selectedProductId = id
-    navigateTo(`product/${id}`)
+    openProduct(id)
   }
 
   if (action === 'add-to-cart') {
@@ -819,14 +1035,46 @@ appView.addEventListener('click', (event) => {
   if (action === 'increase' || action === 'decrease' || action === 'remove') {
     updateQuantity(id, action)
   }
+
+  if (action === 'toggle-deals') {
+    state.onlyDeals = !state.onlyDeals
+    renderApp()
+  }
+
+  if (action === 'toggle-favorites') {
+    state.onlyFavorites = !state.onlyFavorites
+    renderApp()
+  }
+
+  if (action === 'reset-filters') {
+    state.activeCategory = 'Tümü'
+    state.activePriceRange = 'all'
+    state.onlyDeals = false
+    state.onlyFavorites = false
+    state.sortBy = 'featured'
+    state.searchQuery = ''
+    renderApp()
+  }
+
+  if (action === 'select-gallery') {
+    state.selectedGalleryIndex = Number(galleryIndex)
+    renderApp()
+  }
 })
 
 appView.addEventListener('input', (event) => {
-  if (!event.target.matches('[data-search-field]')) {
-    return
-  }
-
+  if (!event.target.matches('[data-search-field]')) return
   state.searchQuery = event.target.value
+  renderApp()
+})
+
+appView.addEventListener('change', (event) => {
+  const select = event.target.closest('[data-filter-select]')
+  if (!select) return
+
+  const type = select.dataset.filterSelect
+  if (type === 'price') state.activePriceRange = select.value
+  if (type === 'sort') state.sortBy = select.value
   renderApp()
 })
 
@@ -837,6 +1085,8 @@ staticRouteButtons.forEach((button) => {
 })
 
 window.addEventListener('hashchange', renderApp)
+
+renderIcons()
 
 if (!window.location.hash) {
   window.location.hash = 'home'

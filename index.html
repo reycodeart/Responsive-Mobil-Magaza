@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Responsive Mobil Magaza; HTML, Tailwind CSS ve Vanilla JavaScript ile gelistirilmis, sayfa yenilenmeden calisan mobil-first bir e-ticaret prototipidir."
+      content="Responsive Mobil Mağaza; HTML, Tailwind CSS ve Vanilla JavaScript ile geliştirilmiş, sayfa yenilenmeden çalışan mobil-first bir e-ticaret prototipidir."
     />
     <meta
       name="keywords"
-      content="responsive mobil magaza, tailwind css, vanilla javascript, urun listesi, sepet, product detail, mobile ui"
+      content="responsive mobil mağaza, tailwind css, vanilla javascript, ürün listesi, sepet, ürün detayı, mobile ui"
     />
     <meta name="theme-color" content="#09090f" />
     <title>Responsive Mobil Magaza</title>
@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body class="bg-night text-slate-100">
-    <a class="skip-link" href="#app-view">Icerige gec</a>
+    <a class="skip-link" href="#app-view">İçeriğe geç</a>
 
     <div class="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(139,92,246,0.22),_transparent_30%),linear-gradient(180deg,#09090f_0%,#0f172a_45%,#111827_100%)]">
       <header class="app-header">
@@ -47,7 +47,7 @@
             <a href="#home" class="brand-link" aria-label="Ana sayfaya don">
               <span class="brand-mark">RM</span>
               <span>
-                <strong>Responsive Mobil Magaza</strong>
+                <strong>Responsive Mobil Mağaza</strong>
                 <small>Mobil-first teknoloji vitrini</small>
               </span>
             </a>
@@ -55,30 +55,28 @@
             <div class="header-actions">
               <button
                 type="button"
+                class="icon-button icon-button--ghost"
+                data-route="home"
+                aria-label="Ana sayfaya git"
+              >
+                <i data-lucide="sparkles"></i>
+              </button>
+              <button
+                type="button"
                 class="icon-button"
                 data-route="search"
-                aria-label="Arama sayfasina git"
+                aria-label="Arama sayfasına git"
               >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M10.5 4a6.5 6.5 0 1 0 4.03 11.6l4.44 4.44 1.41-1.41-4.44-4.44A6.5 6.5 0 0 0 10.5 4Zm0 2a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <i data-lucide="search"></i>
               </button>
 
               <button
                 type="button"
                 class="icon-button icon-button--cart"
                 data-route="cart"
-                aria-label="Sepet sayfasina git"
+                aria-label="Sepet sayfasına git"
               >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M7 5H3v2h2l2.4 8.4A2 2 0 0 0 9.32 17H18v-2H9.32l-.29-1H17a2 2 0 0 0 1.94-1.51L20.9 6H7.42L7 5Zm2.16 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <i data-lucide="shopping-bag"></i>
                 <span id="header-cart-badge" class="cart-badge">0</span>
               </button>
             </div>
@@ -89,42 +87,25 @@
       <main id="app-view" class="app-frame app-view" aria-live="polite"></main>
 
       <footer class="app-frame app-footer">
-        Responsive Mobil Magaza - <span id="current-year"></span>
+        Responsive Mobil Mağaza - <span id="current-year"></span>
       </footer>
 
       <nav class="bottom-nav" aria-label="Alt gezinme">
         <button type="button" class="bottom-nav__item is-current" data-route="home" aria-label="Ana sayfa">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 4.5 3 11v9h6v-5h6v5h6v-9l-9-6.5Z" fill="currentColor" />
-          </svg>
+          <i data-lucide="house"></i>
           <span>Home</span>
         </button>
-        <button type="button" class="bottom-nav__item" data-route="search" aria-label="Arama sayfasi">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M10.5 4a6.5 6.5 0 1 0 4.03 11.6l4.44 4.44 1.41-1.41-4.44-4.44A6.5 6.5 0 0 0 10.5 4Z"
-              fill="currentColor"
-            />
-          </svg>
+        <button type="button" class="bottom-nav__item" data-route="search" aria-label="Arama sayfası">
+          <i data-lucide="search"></i>
           <span>Search</span>
         </button>
-        <button type="button" class="bottom-nav__item" data-route="cart" aria-label="Sepet sayfasi">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M7 5H3v2h2l2.4 8.4A2 2 0 0 0 9.32 17H18v-2H9.32l-.29-1H17a2 2 0 0 0 1.94-1.51L20.9 6H7.42L7 5Z"
-              fill="currentColor"
-            />
-          </svg>
+        <button type="button" class="bottom-nav__item" data-route="cart" aria-label="Sepet sayfası">
+          <i data-lucide="shopping-cart"></i>
           <span>Cart</span>
           <span id="nav-cart-badge" class="bottom-nav__badge">0</span>
         </button>
-        <button type="button" class="bottom-nav__item" data-route="profile" aria-label="Profil sayfasi">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2.01-8 4.5V20h16v-1.5c0-2.49-3.58-4.5-8-4.5Z"
-              fill="currentColor"
-            />
-          </svg>
+        <button type="button" class="bottom-nav__item" data-route="profile" aria-label="Profil sayfası">
+          <i data-lucide="user-round"></i>
           <span>Profile</span>
         </button>
       </nav>
