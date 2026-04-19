@@ -873,44 +873,95 @@ const checkoutViewMarkup = () => {
             </div>
           `
           : `
-            <div class="checkout-layout">
-              <section class="premium-card p-5">
-                <div class="space-y-4">
-                  <div>
-                    <h2 class="text-lg font-semibold text-white">Teslimat Bilgileri</h2>
-                    <p class="mt-1 text-sm text-slate-400">Siparişin için örnek bir teslimat akışı hazırlandı.</p>
+            <div class="checkout-grid">
+              <section class="checkout-section">
+                <div class="checkout-section__header">
+                  <div class="flex items-center gap-3">
+                    <span class="checkout-step">1</span>
+                    <div>
+                      <h2 class="text-lg font-semibold text-white">Teslimat Bilgileri</h2>
+                      <p class="mt-1 text-sm text-slate-400">Siparişin için örnek bir teslimat akışı hazırlandı.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="checkout-fields checkout-fields--double">
+                  <label class="field-label">
+                    <span>Ad Soyad</span>
+                    <input type="text" value="Reyhan Keskin" />
+                  </label>
+                  <label class="field-label">
+                    <span>Telefon</span>
+                    <input type="tel" value="+90 555 555 55 55" />
+                  </label>
+                </div>
+
+                <div class="checkout-fields mt-4">
+                  <label class="field-label">
+                    <span>E-posta</span>
+                    <input type="email" value="ornek@magaza.com" />
+                  </label>
+                  <label class="field-label">
+                    <span>Adres</span>
+                    <textarea rows="4">İstanbul / Kadıköy, örnek teslimat adresi</textarea>
+                  </label>
+                </div>
+
+                <div class="checkout-section mt-4">
+                  <div class="checkout-section__header">
+                    <div class="flex items-center gap-3">
+                      <span class="checkout-step">2</span>
+                      <div>
+                        <h3 class="text-base font-semibold text-white">Teslimat Seçeneği</h3>
+                        <p class="mt-1 text-sm text-slate-400">Sana uygun gönderim yöntemini seç.</p>
+                      </div>
+                    </div>
                   </div>
 
-                  <div class="checkout-form-grid">
-                    <label class="checkout-field">
-                      <span>Ad Soyad</span>
-                      <input type="text" value="Reyhan Keskin" />
+                  <div class="checkout-fields">
+                    <label class="checkout-option">
+                      <input type="radio" name="delivery" checked />
+                      <div>
+                        <strong>Standart Teslimat</strong>
+                        <span>1-2 iş günü · Ücretsiz kargo</span>
+                      </div>
                     </label>
-                    <label class="checkout-field">
-                      <span>Telefon</span>
-                      <input type="tel" value="+90 555 555 55 55" />
-                    </label>
-                    <label class="checkout-field checkout-field--full">
-                      <span>E-posta</span>
-                      <input type="email" value="ornek@magaza.com" />
-                    </label>
-                    <label class="checkout-field checkout-field--full">
-                      <span>Adres</span>
-                      <textarea rows="4">İstanbul / Kadıköy, örnek teslimat adresi</textarea>
+                    <label class="checkout-option">
+                      <input type="radio" name="delivery" />
+                      <div>
+                        <strong>Hızlı Teslimat</strong>
+                        <span>Aynı gün · Premium gönderim</span>
+                      </div>
                     </label>
                   </div>
+                </div>
 
-                  <div class="checkout-delivery-grid">
-                    <button type="button" class="delivery-option is-active">
-                      <i data-lucide="truck"></i>
-                      <strong>Standart Teslimat</strong>
-                      <span>1-2 iş günü</span>
-                    </button>
-                    <button type="button" class="delivery-option">
-                      <i data-lucide="zap"></i>
-                      <strong>Hızlı Teslimat</strong>
-                      <span>Aynı gün</span>
-                    </button>
+                <div class="checkout-section mt-4">
+                  <div class="checkout-section__header">
+                    <div class="flex items-center gap-3">
+                      <span class="checkout-step">3</span>
+                      <div>
+                        <h3 class="text-base font-semibold text-white">Ödeme Yöntemi</h3>
+                        <p class="mt-1 text-sm text-slate-400">Kart veya kapıda ödeme seçebilirsin.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="checkout-fields">
+                    <label class="checkout-option">
+                      <input type="radio" name="payment" checked />
+                      <div>
+                        <strong>Kredi / Banka Kartı</strong>
+                        <span>Tek çekim veya taksitli ödeme</span>
+                      </div>
+                    </label>
+                    <label class="checkout-option">
+                      <input type="radio" name="payment" />
+                      <div>
+                        <strong>Kapıda Ödeme</strong>
+                        <span>Nakit veya kart ile teslimatta ödeme</span>
+                      </div>
+                    </label>
                   </div>
                 </div>
               </section>
@@ -960,12 +1011,17 @@ const checkoutViewMarkup = () => {
                     </div>
                   </div>
 
+                  <div class="info-note mt-4">
+                    Sipariş tamamlandığında bu örnek akış sepetini temizler ve seni ana sayfaya yönlendirir.
+                  </div>
+
                   <button
                     type="button"
-                    class="mt-5 w-full rounded-2xl bg-gradient-to-r from-emerald-300 to-cyan-300 px-4 py-3 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5"
+                    class="checkout-submit mt-5"
                     data-action="complete-order"
                   >
-                    Siparişi Tamamla
+                    <i data-lucide="shield-check"></i>
+                    <span>Siparişi Tamamla</span>
                   </button>
                 </section>
               </aside>

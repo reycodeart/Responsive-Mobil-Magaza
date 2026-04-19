@@ -256,6 +256,11 @@ body.is-scrolling-down .app-header {
   padding: 1rem;
 }
 
+.checkout-stack {
+  display: grid;
+  gap: 1rem;
+}
+
 .checkout-section__header {
   display: flex;
   align-items: center;
@@ -294,6 +299,11 @@ body.is-scrolling-down .app-header {
   font-weight: 600;
 }
 
+.field-label span {
+  display: block;
+  color: rgb(226 232 240);
+}
+
 .field-label input,
 .field-label textarea,
 .field-label select {
@@ -326,7 +336,7 @@ body.is-scrolling-down .app-header {
 
 .checkout-option {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.8rem;
   border: 1px solid rgb(255 255 255 / 0.08);
   border-radius: 1rem;
@@ -341,6 +351,7 @@ body.is-scrolling-down .app-header {
 .checkout-option strong {
   display: block;
   color: #fff;
+  line-height: 1.35;
 }
 
 .checkout-option span {
@@ -348,6 +359,7 @@ body.is-scrolling-down .app-header {
   margin-top: 0.15rem;
   color: rgb(148 163 184);
   font-size: 0.78rem;
+  line-height: 1.45;
 }
 
 .checkout-submit {
