@@ -187,6 +187,7 @@ const state = {
   onlyDeals: false,
   onlyFavorites: false,
   sortBy: 'featured',
+  barCollapsed: false,
   cart: readStorage(STORAGE_KEYS.cart, []),
   favorites: readStorage(STORAGE_KEYS.favorites, []),
 }
@@ -202,6 +203,8 @@ const headerCartBadge = document.querySelector('#header-cart-badge')
 const navCartBadge = document.querySelector('#nav-cart-badge')
 const currentYear = document.querySelector('#current-year')
 const staticRouteButtons = document.querySelectorAll('[data-route]')
+const appHeader = document.querySelector('.app-header')
+const bottomNav = document.querySelector('.bottom-nav')
 
 currentYear.textContent = new Date().getFullYear()
 
@@ -225,7 +228,7 @@ const parseRoute = () => {
     return Number.isFinite(id) ? { name: 'product', id } : { name: 'home' }
   }
 
-  if (hash === 'cart' || hash === 'search' || hash === 'profile') {
+  if (hash === 'cart' || hash === 'search' || hash === 'profile' || hash === 'checkout') {
     return { name: hash }
   }
 
@@ -294,6 +297,15 @@ const getFilteredProducts = (includeCategory = true) => {
 const getHomeProducts = () => getFilteredProducts(true)
 const getSearchResults = () => getFilteredProducts(false)
 const getDeals = () => products.filter((product) => product.deal)
+
+const getCheckoutTotals = () => {
+  const { items, itemCount, subtotal } = getCartSummary()
+  const discount = state.onlyDeals ? Math.round(subtotal * 0.03) : 0
+  const shipping = subtotal > 0 ? 0 : 0
+  const total = Math.max(subtotal - discount + shipping, 0)
+
+  return { items, itemCount, subtotal, discount, shipping, total }
+}
 
 const getCartSummary = () => {
   const items = state.cart.map((entry) => {
@@ -816,10 +828,147 @@ const cartViewMarkup = () => {
                 <button
                   type="button"
                   class="mt-5 w-full rounded-2xl bg-gradient-to-r from-cyan-300 to-violet-400 px-4 py-3 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5"
+                  data-action="go-checkout"
                 >
                   Ödemeye Geç
                 </button>
               </section>
+            </div>
+          `
+      }
+    </section>
+  `
+}
+
+const checkoutViewMarkup = () => {
+  const { items, itemCount, subtotal, discount, total } = getCheckoutTotals()
+
+  return `
+    <section class="space-y-5">
+      <div class="flex items-center justify-between gap-3">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-300">Checkout</p>
+          <h1 class="mt-2 text-3xl font-bold text-white">Ödeme ve Teslimat</h1>
+        </div>
+        <span class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-2 text-sm font-semibold text-emerald-200">
+          ${itemCount} ürün
+        </span>
+      </div>
+
+      ${
+        items.length === 0
+          ? `
+            <div class="empty-state text-center">
+              <p class="text-lg font-semibold text-white">Checkout için sepetinde ürün olmalı</p>
+              <p class="mt-2 text-sm leading-7 text-slate-400">
+                Önce ürün ekleyip sonra ödeme adımına geçebilirsin.
+              </p>
+              <button
+                type="button"
+                class="mt-4 rounded-full bg-gradient-to-r from-cyan-300 to-violet-400 px-4 py-2 text-sm font-semibold text-slate-950"
+                data-action="go-cart"
+              >
+                Sepete dön
+              </button>
+            </div>
+          `
+          : `
+            <div class="checkout-layout">
+              <section class="premium-card p-5">
+                <div class="space-y-4">
+                  <div>
+                    <h2 class="text-lg font-semibold text-white">Teslimat Bilgileri</h2>
+                    <p class="mt-1 text-sm text-slate-400">Siparişin için örnek bir teslimat akışı hazırlandı.</p>
+                  </div>
+
+                  <div class="checkout-form-grid">
+                    <label class="checkout-field">
+                      <span>Ad Soyad</span>
+                      <input type="text" value="Reyhan Keskin" />
+                    </label>
+                    <label class="checkout-field">
+                      <span>Telefon</span>
+                      <input type="tel" value="+90 555 555 55 55" />
+                    </label>
+                    <label class="checkout-field checkout-field--full">
+                      <span>E-posta</span>
+                      <input type="email" value="ornek@magaza.com" />
+                    </label>
+                    <label class="checkout-field checkout-field--full">
+                      <span>Adres</span>
+                      <textarea rows="4">İstanbul / Kadıköy, örnek teslimat adresi</textarea>
+                    </label>
+                  </div>
+
+                  <div class="checkout-delivery-grid">
+                    <button type="button" class="delivery-option is-active">
+                      <i data-lucide="truck"></i>
+                      <strong>Standart Teslimat</strong>
+                      <span>1-2 iş günü</span>
+                    </button>
+                    <button type="button" class="delivery-option">
+                      <i data-lucide="zap"></i>
+                      <strong>Hızlı Teslimat</strong>
+                      <span>Aynı gün</span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <aside class="space-y-4">
+                <section class="summary-card p-5">
+                  <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold text-white">Sipariş Özeti</h2>
+                    <span class="text-sm text-slate-400">${itemCount} ürün</span>
+                  </div>
+
+                  <div class="mt-4 space-y-3">
+                    ${items
+                      .map(
+                        (item) => `
+                          <div class="checkout-item-row">
+                            <div class="flex items-center gap-3">
+                              <img src="${item.image}" alt="${item.name}" class="checkout-item-thumb" loading="lazy" decoding="async" />
+                              <div>
+                                <p class="text-sm font-semibold text-white">${item.name}</p>
+                                <span class="text-xs text-slate-400">${item.quantity} adet</span>
+                              </div>
+                            </div>
+                            <strong class="text-sm text-white">${currency.format(item.total)}</strong>
+                          </div>
+                        `,
+                      )
+                      .join('')}
+                  </div>
+
+                  <div class="mt-5 space-y-3 border-t border-white/10 pt-4 text-sm">
+                    <div class="flex items-center justify-between text-slate-400">
+                      <span>Ara Toplam</span>
+                      <strong class="text-white">${currency.format(subtotal)}</strong>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-400">
+                      <span>İndirim</span>
+                      <strong class="text-emerald-300">-${currency.format(discount)}</strong>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-400">
+                      <span>Kargo</span>
+                      <strong class="text-white">Ücretsiz</strong>
+                    </div>
+                    <div class="flex items-center justify-between pt-2 text-base">
+                      <span class="font-semibold text-slate-200">Genel Toplam</span>
+                      <strong class="text-2xl font-bold text-white">${currency.format(total)}</strong>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="mt-5 w-full rounded-2xl bg-gradient-to-r from-emerald-300 to-cyan-300 px-4 py-3 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5"
+                    data-action="complete-order"
+                  >
+                    Siparişi Tamamla
+                  </button>
+                </section>
+              </aside>
             </div>
           `
       }
@@ -953,6 +1102,7 @@ const profileViewMarkup = () => {
 const renderView = () => {
   if (state.route === 'product') return productDetailMarkup()
   if (state.route === 'cart') return cartViewMarkup()
+  if (state.route === 'checkout') return checkoutViewMarkup()
   if (state.route === 'search') return searchViewMarkup()
   if (state.route === 'profile') return profileViewMarkup()
   return homeViewMarkup()
@@ -982,11 +1132,17 @@ const renderIcons = () => {
   createIcons({ icons })
 }
 
+const updateBars = () => {
+  appHeader.classList.toggle('is-compact', state.barCollapsed)
+  bottomNav.classList.toggle('is-compact', state.barCollapsed)
+}
+
 const renderApp = () => {
   syncRoute()
   appView.innerHTML = renderView()
   updateCartBadges()
   updateRouteButtons()
+  updateBars()
   renderIcons()
 
   if (state.route === 'search') {
@@ -1032,6 +1188,14 @@ appView.addEventListener('click', (event) => {
     navigateTo('search')
   }
 
+  if (action === 'go-cart') {
+    navigateTo('cart')
+  }
+
+  if (action === 'go-checkout') {
+    navigateTo('checkout')
+  }
+
   if (action === 'increase' || action === 'decrease' || action === 'remove') {
     updateQuantity(id, action)
   }
@@ -1060,6 +1224,13 @@ appView.addEventListener('click', (event) => {
     state.selectedGalleryIndex = Number(galleryIndex)
     renderApp()
   }
+
+  if (action === 'complete-order') {
+    state.cart = []
+    persistState()
+    updateCartBadges()
+    navigateTo('home')
+  }
 })
 
 appView.addEventListener('input', (event) => {
@@ -1082,6 +1253,15 @@ staticRouteButtons.forEach((button) => {
   button.addEventListener('click', () => {
     navigateTo(button.dataset.route)
   })
+})
+
+let lastScrollY = window.scrollY
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY
+  const shouldCollapse = currentScrollY > 120 && currentScrollY > lastScrollY
+  state.barCollapsed = shouldCollapse
+  updateBars()
+  lastScrollY = currentScrollY
 })
 
 window.addEventListener('hashchange', renderApp)
