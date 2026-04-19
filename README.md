@@ -1,25 +1,27 @@
 # Responsive Mobil Magaza
 
-Responsive Mobil Magaza, hocanin istedigi 3 haftalik teslim planina uygun olarak hazirlanmis mobil-first bir e-ticaret arayuzudur. Proje; urun listesi, urun detay alani ve sepet deneyimini tek sayfa uzerinde responsive, hizli ve erisilebilir bir yapiyla sunar.
+Responsive Mobil Magaza, HTML, Tailwind CSS ve Vanilla JavaScript ile gelistirilmis mobil-first bir e-ticaret prototipidir. Uygulama, sayfa yenilenmeden gorunum degistiren basit bir routing mantigi ile Home, Product Detail, Cart, Search ve Profile ekranlarini yonetir.
 
 ## Kullanilan Teknolojiler
 
 - HTML5
-- CSS3
 - Tailwind CSS
-- JavaScript
+- Vanilla JavaScript
 - Vite
 
-## Proje Ozellikleri
+## Ozellikler
 
-- Mobil-first responsive tasarim
-- Urun listesi bolumu
-- Urun detay paneli
-- Sepete ekleme / cikarma islemleri
-- Toplam fiyat hesaplama
-- Lazy loading kullanan urun gorselleri
-- Semantik HTML ve erisilebilirlik etiketleri
-- Koyu tema modern arayuz
+- Sayfa yenilenmeden calisan uygulama ici routing mantigi
+- Home ekraninda kaydirilabilir kategoriler
+- Gunun Firsatlari banner alani
+- Mobilde iki sutunlu urun listesi
+- Urun detay ekrani
+- Calisan sepet ekrani ve toplam fiyat hesaplama
+- Sticky header ve sabit bottom navigation bar
+- Favori butonlari
+- Dark mode uyumlu modern arayuz
+- Unsplash tabanli teknoloji urun gorselleri
+- Lazy loading ve semantik HTML yapisi
 
 ## Proje Yapisi
 
@@ -35,51 +37,52 @@ Responsive-Mobil-Magaza/
 
 ## Visual Studio Code'da Calistirma
 
-1. Repoyu bilgisayarina indir veya klonla.
-2. Visual Studio Code ile proje klasorunu ac.
-3. Ust menuden `Terminal > New Terminal` sec.
-4. Asagidaki komutu calistir:
+1. Proje klasorunu Visual Studio Code ile ac.
+2. `Terminal > New Terminal` ile terminal baslat.
+3. Bagimliliklari yukle:
 
    ```bash
    npm install
    ```
 
-5. Ardindan gelistirme sunucusunu baslat:
+4. Gelistirme sunucusunu calistir:
 
    ```bash
    npm run dev
    ```
 
-6. Terminal sana genelde su adrese benzer bir link verir:
+5. Terminalde verilen adresi tarayicida ac. Genelde:
 
    ```bash
    http://localhost:5173
    ```
 
-7. Bu adresi tarayicida ac ve projeyi incele.
-
 ## Diger Komutlar
 
-Uretim build'i almak icin:
+Uretim build'i:
 
 ```bash
 npm run build
 ```
 
-Build ciktisini yerelde onizlemek icin:
+Build onizlemesi:
 
 ```bash
 npm run preview
 ```
 
-## Lighthouse ve Performans Notlari
+## Uygulama Akisi
 
-- Gorseller `loading="lazy"` ile yuklenir.
-- Sayfada semantik bolumler (`header`, `main`, `section`, `article`, `aside`, `footer`) kullanilir.
-- Kontrastli renk paleti tercih edilmistir.
-- Butonlar ve etkilesimli alanlarda `aria-label` kullanilmistir.
-- Vitrin verileri hafif tutulmustur; gereksiz kutuphane kullanimi azaltılmistir.
+- `#/home` -> Ana sayfa
+- `#/product/:id` -> Urun detay ekrani
+- `#/cart` -> Sepet ekrani
+- `#/search` -> Arama ekrani
+- `#/profile` -> Profil placeholder ekrani
 
-## Sunum Icin Kisa Ozet
+## Lighthouse ve Erisilebilirlik Notlari
 
-Sunumda anlatmak icin hazir notlar `PRESENTATION_NOTES.md` dosyasina eklenmistir.
+- `header`, `main`, `section`, `article`, `footer` gibi semantik etiketler kullanilir.
+- Gorseller `loading="lazy"` ve `decoding="async"` ile optimize edilir.
+- Butonlarda `aria-label` tanimlari bulunur.
+- Kontrastli dark mode paleti kullanilir.
+- Gereksiz framework/state yonetim kutuphaneleri eklenmemistir.
