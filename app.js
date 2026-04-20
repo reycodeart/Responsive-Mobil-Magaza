@@ -166,6 +166,8 @@ const state = {
   favorites: readStorage(STORAGE_KEYS.favorites, []),
 }
 
+const EAGER_PRODUCT_IDS = new Set([1, 2])
+
 const currency = new Intl.NumberFormat('tr-TR', {
   style: 'currency',
   currency: 'TRY',
@@ -363,6 +365,9 @@ const openProduct = (productId) => {
 
 const productCardMarkup = (product) => {
   const isFavorite = state.favorites.includes(product.id)
+  const isPriorityImage = state.route === 'home' && EAGER_PRODUCT_IDS.has(product.id)
+  const imageLoading = isPriorityImage ? 'eager' : 'lazy'
+  const imageFetchPriority = isPriorityImage ? 'high' : 'low'
 
   return `
     <article class="product-card">
@@ -388,8 +393,11 @@ const productCardMarkup = (product) => {
             src="${product.image}"
             alt="${product.name}"
             class="h-full w-full object-cover"
-            loading="lazy"
+            loading="${imageLoading}"
+            fetchpriority="${imageFetchPriority}"
             decoding="async"
+            width="720"
+            height="880"
           />
         </button>
       </div>
@@ -444,6 +452,7 @@ const dealBannerMarkup = () => {
               class="rounded-full bg-gradient-to-r from-cyan-300 to-violet-400 px-4 py-2 text-sm font-semibold text-slate-950"
               data-action="open-product"
               data-product-id="${deal.id}"
+              aria-label="${deal.name} fırsat ürününü incele"
             >
               İncele
             </button>
@@ -599,8 +608,11 @@ const productDetailMarkup = () => {
               src="${activeImage}"
               alt="${product.name}"
               class="h-full w-full object-cover"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
               decoding="async"
+              width="720"
+              height="760"
             />
             <button
               type="button"
@@ -624,7 +636,7 @@ const productDetailMarkup = () => {
                     data-gallery-index="${index}"
                     aria-label="${product.name} için ${index + 1}. görseli aç"
                   >
-                    <img src="${image}" alt="${product.name} görsel ${index + 1}" loading="lazy" decoding="async" />
+                    <img src="${image}" alt="${product.name} görsel ${index + 1}" loading="lazy" decoding="async" width="240" height="180" />
                   </button>
                 `,
               )
@@ -1266,6 +1278,8 @@ const profileViewMarkup = () => {
                             class="h-16 w-16 rounded-2xl object-cover"
                             loading="lazy"
                             decoding="async"
+                            width="64"
+                            height="64"
                           />
                           <div>
                             <p class="text-sm font-semibold text-white">${product.name}</p>

@@ -10,6 +10,10 @@ body {
     sans-serif;
 }
 
+body.preload-styles {
+  visibility: visible;
+}
+
 img {
   display: block;
   max-width: 100%;
