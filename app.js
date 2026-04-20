@@ -416,24 +416,24 @@ const productCardMarkup = (product) => {
           />
         </button>
       </div>
-      <div class="space-y-3 p-4">
-        <div class="flex items-center justify-between gap-2">
-          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-cyan-300">${product.brand}</p>
-          <span class="text-xs text-slate-400">${product.rating} ★</span>
+      <div class="product-card__content">
+        <div class="product-card__meta">
+          <p class="product-card__brand">${product.brand}</p>
+          <span class="product-card__rating">${product.rating} ★</span>
         </div>
         <button
           type="button"
-          class="text-left"
+          class="product-card__title-button"
           data-action="open-product"
           data-product-id="${product.id}"
         >
-          <h3 class="text-sm font-semibold leading-6 text-white">${product.name}</h3>
+          <h3 class="product-card__title">${product.name}</h3>
         </button>
-        <p class="text-xs leading-5 text-slate-400">${product.shortDescription}</p>
-        <div class="flex items-center justify-between gap-3">
+        <p class="product-card__description">${product.shortDescription}</p>
+        <div class="product-card__footer">
           <div>
-            <strong class="block text-base text-white">${currency.format(product.price)}</strong>
-            <span class="text-xs text-slate-500 line-through">${currency.format(product.oldPrice)}</span>
+            <strong class="product-card__price">${currency.format(product.price)}</strong>
+            <span class="product-card__old-price">${currency.format(product.oldPrice)}</span>
           </div>
           <button
             type="button"
@@ -656,8 +656,8 @@ const productDetailMarkup = () => {
               loading="eager"
               fetchpriority="high"
               decoding="async"
-              width="720"
-              height="760"
+            width="400"
+            height="500"
             />
             <button
               type="button"
@@ -681,7 +681,7 @@ const productDetailMarkup = () => {
                     data-gallery-index="${index}"
                     aria-label="${product.name} için ${index + 1}. görseli aç"
                   >
-                    <img src="${image}" alt="${product.name} görsel ${index + 1}" loading="lazy" decoding="async" width="240" height="180" />
+                    <img src="${image}" alt="${product.name} görsel ${index + 1}" loading="lazy" decoding="async" width="120" height="90" />
                   </button>
                 `,
               )
@@ -1018,8 +1018,8 @@ const checkoutViewMarkup = () => {
                             <div class="flex items-center gap-3">
                               <img src="${item.image}" alt="${item.name}" class="checkout-item-thumb" loading="lazy" decoding="async" />
                               <div>
-                                <p class="text-sm font-semibold text-white">${item.name}</p>
-                                <span class="text-xs text-slate-400">${item.quantity} adet</span>
+                            <p class="checkout-item-title">${item.name}</p>
+                            <span class="checkout-item-qty">${item.quantity} adet</span>
                               </div>
                             </div>
                             <strong class="text-sm text-white">${currency.format(item.total)}</strong>
@@ -1320,7 +1320,7 @@ const profileViewMarkup = () => {
                           <img
                             src="${product.image}"
                             alt="${product.name}"
-                            class="h-16 w-16 rounded-2xl object-cover"
+                            class="profile-favorite-thumb"
                             loading="lazy"
                             decoding="async"
                             width="64"

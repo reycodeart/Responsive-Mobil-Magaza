@@ -2,16 +2,31 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  color-scheme: dark;
+  --bg: #0b1120;
+  --panel: #111827;
+  --panel-soft: #172033;
+  --panel-strong: #1e293b;
+  --line: rgba(148, 163, 184, 0.18);
+  --line-strong: rgba(167, 139, 250, 0.26);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent-a: #7c3aed;
+  --accent-b: #2563eb;
+  --accent-c: #22d3ee;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-}
-
-body.preload-styles {
-  visibility: visible;
+  background:
+    radial-gradient(circle at top, rgba(124, 58, 237, 0.16), transparent 30%),
+    linear-gradient(180deg, #090f1a 0%, #0b1120 55%, #111827 100%);
+  color: var(--text);
 }
 
 img {
@@ -42,17 +57,6 @@ a {
   transform: translateY(0);
 }
 
-.shadow-soft {
-  box-shadow: 0 10px 24px rgba(4, 9, 19, 0.16);
-}
-
-.glass-surface {
-  border: 1px solid rgb(255 255 255 / 0.08);
-  background: linear-gradient(180deg, rgb(15 23 42 / 0.82), rgb(9 9 15 / 0.92));
-  box-shadow: 0 10px 24px rgba(4, 9, 19, 0.16);
-  backdrop-filter: blur(14px);
-}
-
 .app-frame {
   width: min(100%, 480px);
   margin: 0 auto;
@@ -79,12 +83,11 @@ body.is-scrolling-down .app-header {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  border: 1px solid rgb(255 255 255 / 0.08);
+  border: 1px solid var(--line);
   border-radius: 20px;
-  background: rgb(9 9 15 / 0.75);
+  background: rgba(10, 15, 27, 0.82);
   backdrop-filter: blur(16px);
   padding: 0.78rem 0.88rem;
-  box-shadow: 0 8px 18px rgba(4, 9, 19, 0.14);
 }
 
 .brand-link {
@@ -115,7 +118,7 @@ body.is-scrolling-down .app-header {
 .brand-link small {
   display: block;
   margin-top: 0.15rem;
-  color: rgb(148 163 184);
+  color: var(--muted);
   font-size: 0.68rem;
 }
 
@@ -131,10 +134,10 @@ body.is-scrolling-down .app-header {
   place-items: center;
   width: 2.55rem;
   height: 2.55rem;
-  border: 1px solid rgb(255 255 255 / 0.1);
+  border: 1px solid var(--line);
   border-radius: 16px;
-  background: rgb(255 255 255 / 0.04);
-  color: rgb(241 245 249);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
   transition:
     transform 160ms ease,
     background 160ms ease,
@@ -143,12 +146,12 @@ body.is-scrolling-down .app-header {
 
 .icon-button:hover {
   transform: translateY(-1px);
-  border-color: rgb(167 139 250 / 0.35);
+  border-color: var(--line-strong);
   background: rgb(255 255 255 / 0.08);
 }
 
 .icon-button--ghost {
-  background: linear-gradient(135deg, rgb(56 189 248 / 0.18), rgb(139 92 246 / 0.22));
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(124, 58, 237, 0.22));
 }
 
 .icon-button svg,
@@ -196,12 +199,10 @@ body.is-scrolling-down .app-header {
   padding-bottom: 6.4rem;
 }
 
-.scroll-row,
 .category-scroller {
   scrollbar-width: none;
 }
 
-.scroll-row::-webkit-scrollbar,
 .category-scroller::-webkit-scrollbar {
   display: none;
 }
@@ -209,6 +210,11 @@ body.is-scrolling-down .app-header {
 .hero-banner {
   position: relative;
   overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1.6rem;
+  background:
+    linear-gradient(135deg, rgba(22, 34, 51, 0.96), rgba(17, 24, 39, 0.96)),
+    linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(37, 99, 235, 0.16));
 }
 
 .hero-banner::after {
@@ -219,54 +225,41 @@ body.is-scrolling-down .app-header {
   width: 11rem;
   height: 11rem;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgb(56 189 248 / 0.22), transparent 65%);
-}
-
-.hero-stat {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  border: 1px solid rgb(255 255 255 / 0.08);
-  border-radius: 1.25rem;
-  background: rgb(255 255 255 / 0.05);
-  padding: 0.9rem 1rem;
-}
-
-.hero-stat__icon {
-  display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.9rem;
-  background: linear-gradient(135deg, rgb(56 189 248 / 0.24), rgb(139 92 246 / 0.26));
-  color: #fff;
-}
-
-.hero-stat strong {
-  display: block;
-  color: #fff;
-}
-
-.hero-stat span {
-  display: block;
-  margin-top: 0.1rem;
-  color: rgb(148 163 184);
-  font-size: 0.78rem;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18), transparent 65%);
 }
 
 .hero-stat-card {
   min-width: 112px;
-  border: 1px solid rgb(255 255 255 / 0.08);
+  border: 1px solid var(--line);
   border-radius: 1.2rem;
-  background: linear-gradient(180deg, rgb(17 24 39 / 0.9), rgb(9 9 15 / 0.96));
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.92), rgba(10, 15, 27, 0.98));
   padding: 0.95rem 1rem;
   text-align: right;
 }
 
+.hero-title {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.06;
+}
+
+.hero-copy {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.72;
+  font-size: 0.95rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
 .filter-panel {
-  border: 1px solid rgb(255 255 255 / 0.08);
-  border-radius: 1.75rem;
-  background: linear-gradient(180deg, rgb(20 25 43 / 0.88), rgb(12 18 34 / 0.95));
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.92), rgba(12, 18, 34, 0.96));
   padding: 1rem;
 }
 
@@ -418,144 +411,6 @@ body.is-scrolling-down .app-header {
   line-height: 1.6;
 }
 
-.process-timeline {
-  display: grid;
-  gap: 1rem;
-}
-
-.timeline-card {
-  position: relative;
-  border: 1px solid rgb(255 255 255 / 0.08);
-  border-radius: 1.5rem;
-  background: linear-gradient(180deg, rgb(15 23 42 / 0.82), rgb(9 9 15 / 0.92));
-  padding: 1.2rem 1rem 1rem;
-  overflow: hidden;
-}
-
-.timeline-card::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 5px;
-}
-
-.timeline-card--analysis::before {
-  background: linear-gradient(90deg, rgb(34 211 238), rgb(16 185 129));
-}
-
-.timeline-card--development::before {
-  background: linear-gradient(90deg, rgb(139 92 246), rgb(217 70 239));
-}
-
-.timeline-card--delivery::before {
-  background: linear-gradient(90deg, rgb(251 191 36), rgb(249 115 22));
-}
-
-.timeline-card__header {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-}
-
-.timeline-card__step {
-  display: grid;
-  place-items: center;
-  width: 2.35rem;
-  height: 2.35rem;
-  border-radius: 9999px;
-  background: rgb(255 255 255 / 0.08);
-  color: #fff;
-  font-size: 0.9rem;
-  font-weight: 800;
-}
-
-.timeline-card__header span {
-  display: block;
-  color: rgb(148 163 184);
-  font-size: 0.78rem;
-}
-
-.timeline-card__header strong {
-  display: block;
-  margin-top: 0.2rem;
-  color: #fff;
-  font-size: 1.05rem;
-}
-
-.timeline-card__body {
-  margin-top: 1rem;
-  color: rgb(203 213 225);
-}
-
-.timeline-card__body p {
-  margin: 0 0 0.9rem;
-  color: rgb(148 163 184);
-  line-height: 1.7;
-  font-size: 0.9rem;
-}
-
-.timeline-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 0.8rem;
-}
-
-.timeline-list li {
-  position: relative;
-  padding-left: 1.2rem;
-  color: rgb(226 232 240);
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-
-.timeline-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.5rem;
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 9999px;
-  background: rgb(34 211 238);
-}
-
-.timeline-card--development .timeline-list li::before {
-  background: rgb(168 85 247);
-}
-
-.timeline-card--delivery .timeline-list li::before {
-  background: rgb(251 191 36);
-}
-
-.report-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 0.5rem;
-}
-
-.report-table th,
-.report-table td {
-  border-bottom: 1px solid rgb(255 255 255 / 0.08);
-  padding: 0.9rem 0.25rem;
-  text-align: left;
-  font-size: 0.9rem;
-}
-
-.report-table th {
-  color: rgb(148 163 184);
-  font-weight: 600;
-}
-
-.report-table td {
-  color: #fff;
-}
-
-.report-table tr:last-child td {
-  border-bottom: 0;
-}
-
 .filter-grid {
   display: grid;
   gap: 0.8rem;
@@ -594,7 +449,7 @@ body.is-scrolling-down .app-header {
 }
 
 .category-pill {
-  border: 1px solid rgb(255 255 255 / 0.1);
+  border: 1px solid var(--line);
   border-radius: 9999px;
   background: rgb(255 255 255 / 0.05);
   padding: 0.72rem 1rem;
@@ -627,7 +482,7 @@ body.is-scrolling-down .app-header {
   justify-content: center;
   gap: 0.45rem;
   min-height: 2.7rem;
-  border: 1px solid rgb(103 232 249 / 0.14);
+  border: 1px solid var(--line-strong);
   border-radius: 9999px;
   background: linear-gradient(135deg, rgb(29 37 66 / 0.96), rgb(57 32 102 / 0.92));
   color: rgb(237 242 255);
@@ -659,9 +514,12 @@ body.is-scrolling-down .app-header {
 }
 
 .product-card {
-  border: 1px solid rgb(255 255 255 / 0.08);
-  border-radius: 24px;
-  background: linear-gradient(180deg, rgb(18 24 43 / 0.9), rgb(10 15 29 / 0.96));
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(18, 24, 43, 0.96), rgba(10, 15, 29, 0.98)),
+    rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
   overflow: hidden;
   transition:
     transform 160ms ease,
@@ -908,9 +766,9 @@ body.is-scrolling-down .app-header {
 .search-result-card,
 .profile-card,
 .cart-item {
-  border: 1px solid rgb(255 255 255 / 0.08);
-  border-radius: 24px;
-  background: rgb(15 23 42 / 0.82);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(18, 24, 43, 0.92), rgba(10, 15, 29, 0.98));
 }
 
 .summary-card {
@@ -921,7 +779,7 @@ body.is-scrolling-down .app-header {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  border: 1px solid rgb(255 255 255 / 0.08);
+  border: 1px solid var(--line);
   border-radius: 1rem;
   background: rgb(255 255 255 / 0.04);
   padding: 0.9rem 1rem;
@@ -1075,7 +933,6 @@ body.is-scrolling-down .app-header {
   border-radius: 20px;
   background: rgb(9 9 15 / 0.82);
   backdrop-filter: blur(18px);
-  box-shadow: 0 10px 22px rgba(2, 8, 23, 0.18);
   transition:
     transform 220ms ease,
     opacity 220ms ease;
@@ -1120,6 +977,17 @@ body.is-scrolling-down .bottom-nav {
 .bottom-nav__item.is-current {
   background: rgb(255 255 255 / 0.08);
   color: #fff;
+}
+
+.lighthouse-badges,
+.report-table,
+.timeline-card,
+.timeline-list,
+.process-timeline,
+.report-card,
+.badge-grid,
+.score-badge {
+  display: none !important;
 }
 
 .app-footer {
