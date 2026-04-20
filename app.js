@@ -3,6 +3,12 @@ const STORAGE_KEYS = {
   favorites: 'responsive-mobile-store-favorites',
 }
 
+const localAssets = {
+  laptop: './product-laptop.svg',
+  phone: './product-phone.svg',
+  headphones: './product-headphones.svg',
+}
+
 const products = [
   {
     id: 1,
@@ -13,13 +19,8 @@ const products = [
     oldPrice: 46999,
     rating: 4.8,
     badge: 'Yeni',
-    image:
-      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=720&q=70',
-    gallery: [
-      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=720&q=70',
-    ],
+    image: localAssets.laptop,
+    gallery: [localAssets.laptop, localAssets.laptop, localAssets.laptop],
     shortDescription: 'İnce kasa, 16 GB RAM ve gün boyu pil ömrü sunan premium laptop.',
     details:
       'Nebula X15; tasarım, ders ve günlük üretkenlik için mobil-first odakta seçilen ana ürünlerden biridir. 120 Hz ekran, hızlı SSD ve sessiz soğutma sistemiyle profesyonel kullanım sunar.',
@@ -37,13 +38,8 @@ const products = [
     oldPrice: 4299,
     rating: 4.7,
     badge: 'Popüler',
-    image:
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=720&q=70',
-    gallery: [
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=720&q=70',
-    ],
+    image: localAssets.headphones,
+    gallery: [localAssets.headphones, localAssets.headphones, localAssets.headphones],
     shortDescription: 'Aktif gürültü engelleme ve yumuşak kulak yastıkları ile net ses.',
     details:
       'Pulse Air, hareket halindeyken müzik ve görüşmeler için yüksek konfor sunar. Hafif gövdesi ve modern tasarımı sayesinde mobil kullanıcıların favorilerinden biridir.',
@@ -61,13 +57,8 @@ const products = [
     oldPrice: 31999,
     rating: 4.9,
     badge: 'Amiral Gemisi',
-    image:
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=720&q=70',
-    gallery: [
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=720&q=70',
-    ],
+    image: localAssets.phone,
+    gallery: [localAssets.phone, localAssets.phone, localAssets.phone],
     shortDescription: 'Geliştirilmiş gece modu ve 120 Hz ekranla amiral gemisi deneyimi.',
     details:
       'Aero S24, tek elle kullanım kolaylığı, güçlü kamera yapısı ve hızlı şarj destekli bataryasıyla modern mobil mağazanın temel ürünlerinden biri olarak konumlandırıldı.',
@@ -85,13 +76,8 @@ const products = [
     oldPrice: 41999,
     rating: 4.6,
     badge: 'Pro',
-    image:
-      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=720&q=70',
-    gallery: [
-      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=720&q=70',
-    ],
+    image: localAssets.laptop,
+    gallery: [localAssets.laptop, localAssets.laptop, localAssets.laptop],
     shortDescription: 'Tasarım ve video işleri için güçlü ekran kartlı ince laptop.',
     details:
       'Vertex Creator, daha çok performans arayan kullanıcılar için geliştirildi. Renk doğruluğu yüksek ekran ve hızlı çoklu görev performansı sunar.',
@@ -109,13 +95,8 @@ const products = [
     oldPrice: 2899,
     rating: 4.5,
     badge: 'Fiyat/Performans',
-    image:
-      'https://images.unsplash.com/photo-1577174881658-0f30ed549adc?auto=format&fit=crop&w=720&q=70',
-    gallery: [
-      'https://images.unsplash.com/photo-1577174881658-0f30ed549adc?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=720&q=70',
-    ],
+    image: localAssets.headphones,
+    gallery: [localAssets.headphones, localAssets.headphones, localAssets.headphones],
     shortDescription: 'Kompakt kutu, net mikrofon ve günlük kullanım için dengeli ses.',
     details:
       'Nova Buds Pro, özellikle öğrenciler ve sürekli hareket halinde olan kullanıcılar için optimize edilmiş bir TWS kulaklık modelidir.',
@@ -133,13 +114,8 @@ const products = [
     oldPrice: 55999,
     rating: 4.7,
     badge: 'Premium',
-    image:
-      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=720&q=70',
-    gallery: [
-      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=720&q=70',
-      'https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=720&q=70',
-    ],
+    image: localAssets.phone,
+    gallery: [localAssets.phone, localAssets.phone, localAssets.phone],
     shortDescription: 'Katlanabilir ekran ve premium hissiyatla gelecek odaklı telefon.',
     details:
       'Luma Fold Phone, yenilikçi tasarım arayan kullanıcılar için seçildi. Büyük ekran deneyimi ve premium malzeme yapısı ile ürün detay sayfasında öne çıkacak şekilde tasarlandı.',

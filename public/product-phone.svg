@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" role="img" aria-labelledby="title desc">
+<title id="title">Telefon ürün görseli</title>
+<desc id="desc">Modern bir ak1ll1 telefon illüstrasyonu</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#0f172a"/>
+<stop offset="100%" stop-color="#1d4ed8"/>
+</linearGradient>
+<linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#22d3ee"/>
+<stop offset="100%" stop-color="#8b5cf6"/>
+</linearGradient>
+</defs>
+<rect width="800" height="900" rx="48" fill="url(#bg)"/>
+<circle cx="660" cy="170" r="120" fill="#ffffff10"/>
+<circle cx="160" cy="750" r="140" fill="#ffffff08"/>
+<rect x="250" y="110" width="300" height="640" rx="42" fill="#0b1120" stroke="#94a3b8" stroke-opacity=".22" stroke-width="8"/>
+<rect x="272" y="145" width="256" height="570" rx="30" fill="url(#screen)"/>
+<rect x="355" y="126" width="92" height="12" rx="6" fill="#cbd5e1" fill-opacity=".45"/>
+<circle cx="400" cy="680" r="14" fill="#ffffff" fill-opacity=".2"/>
+<path d="M320 240c90-75 170-44 215 10 33 40 37 99 2 145-41 53-126 75-217 37V240Z" fill="#ffffff18"/>
+<path d="M334 496c64-24 120-14 158 25 21 22 36 51 33 86-6 68-69 114-161 106-16-1-30-3-44-7l14-210Z" fill="#02061722"/>
+<text x="400" y="820" fill="#e2e8f0" font-size="42" font-family="Arial, sans-serif" text-anchor="middle">Ak1ll1 Telefon</text>
+</svg>

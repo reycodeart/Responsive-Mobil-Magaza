@@ -1,0 +1,16 @@
+<svg width="640" height="640" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="640" rx="48" fill="url(#bg)"/>
+<circle cx="320" cy="320" r="190" fill="rgba(255,255,255,0.05)"/>
+<path d="M210 330C210 250.471 274.471 186 354 186H286C365.529 186 430 250.471 430 330V410C430 432.091 412.091 450 390 450H370V320H430V330Z" fill="#111827"/>
+<path d="M430 330C430 250.471 365.529 186 286 186H354C274.471 186 210 250.471 210 330V410C210 432.091 227.909 450 250 450H270V320H210V330Z" fill="#111827"/>
+<rect x="226" y="320" width="60" height="148" rx="28" fill="#38BDF8"/>
+<rect x="354" y="320" width="60" height="148" rx="28" fill="#8B5CF6"/>
+<path d="M286 468H354" stroke="#E2E8F0" stroke-width="16" stroke-linecap="round"/>
+<text x="52" y="90" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="32" font-weight="700">KULAKLIK</text>
+<defs>
+<linearGradient id="bg" x1="64" y1="32" x2="576" y2="608" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0F172A"/>
+<stop offset="1" stop-color="#111827"/>
+</linearGradient>
+</defs>
+</svg>
