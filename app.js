@@ -182,6 +182,7 @@ const state = {
 }
 
 const EAGER_PRODUCT_IDS = new Set([1, 2])
+const HOME_PRODUCT_LIMIT = 4
 
 const currency = new Intl.NumberFormat('tr-TR', {
   style: 'currency',
@@ -291,7 +292,7 @@ const getFilteredProducts = (includeCategory = true) => {
   return filtered
 }
 
-const getHomeProducts = () => getFilteredProducts(true)
+const getHomeProducts = () => getFilteredProducts(true).slice(0, HOME_PRODUCT_LIMIT)
 const getSearchResults = () => getFilteredProducts(false)
 const getDeals = () => products.filter((product) => product.deal)
 
@@ -461,7 +462,7 @@ const dealBannerMarkup = () => {
           <p class="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300">Günün Fırsatı</p>
           <h1 class="mt-3 text-3xl font-bold leading-tight text-white">${deal.name}</h1>
           <p class="mt-3 text-sm leading-7 text-slate-300">${deal.shortDescription}</p>
-          <div class="mt-5 flex items-center gap-3">
+        <div class="mt-5 flex items-center gap-3">
             <button
               type="button"
               class="theme-button"
@@ -471,7 +472,7 @@ const dealBannerMarkup = () => {
             >
               İncele
             </button>
-            <span class="text-sm font-semibold text-violet-200">${currency.format(deal.price)}</span>
+          <span class="text-sm font-semibold text-violet-200">${currency.format(deal.price)}</span>
           </div>
         </div>
         <div class="hero-stat-card">
@@ -578,7 +579,7 @@ const homeViewMarkup = () => {
         <div class="flex items-center justify-between gap-3">
           <div>
             <h2 id="products-heading" class="text-xl font-semibold text-white">Ürün Listesi</h2>
-            <p class="mt-1 text-sm text-slate-400">2 sütunlu mobil-first ürün ızgarası</p>
+            <p class="mt-1 text-sm text-slate-400">2 sütunlu, hızlı yüklenen mobil ürün ızgarası</p>
           </div>
           <span class="text-sm text-slate-400">${visibleProducts.length} ürün</span>
         </div>
@@ -803,6 +804,8 @@ const cartViewMarkup = () => {
                           class="h-24 w-24 rounded-2xl object-cover"
                           loading="lazy"
                           decoding="async"
+                          width="96"
+                          height="96"
                         />
                         <div class="flex flex-1 flex-col justify-between gap-3">
                           <div>
@@ -1016,7 +1019,7 @@ const checkoutViewMarkup = () => {
                         (item) => `
                           <div class="checkout-item-row">
                             <div class="flex items-center gap-3">
-                              <img src="${item.image}" alt="${item.name}" class="checkout-item-thumb" loading="lazy" decoding="async" />
+                              <img src="${item.image}" alt="${item.name}" class="checkout-item-thumb" loading="lazy" decoding="async" width="52" height="52" />
                               <div>
                             <p class="checkout-item-title">${item.name}</p>
                             <span class="checkout-item-qty">${item.quantity} adet</span>

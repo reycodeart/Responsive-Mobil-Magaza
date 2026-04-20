@@ -575,45 +575,6 @@ body.is-scrolling-down .app-header {
   font-weight: 700;
 }
 
-.product-image-wrap {
-  position: relative;
-  aspect-ratio: 4 / 4.7;
-  overflow: hidden;
-  background: rgb(30 41 59);
-}
-
-.product-image-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 220ms ease;
-}
-
-.product-card:hover .product-image-wrap img {
-  transform: scale(1.04);
-}
-
-.product-badge {
-  position: absolute;
-  left: 0.9rem;
-  top: 0.9rem;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  border-radius: 9999px;
-  background: rgb(9 9 15 / 0.72);
-  padding: 0.4rem 0.7rem;
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
-.product-badge--deal {
-  background: linear-gradient(135deg, rgb(251 191 36 / 0.95), rgb(249 115 22 / 0.95));
-  color: rgb(24 24 27);
-}
-
 .favorite-button {
   position: absolute;
   right: 0.9rem;
@@ -643,37 +604,6 @@ body.is-scrolling-down .app-header {
   color: rgb(251 113 133);
 }
 
-.price-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
-
-.buy-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  border: 0;
-  border-radius: 9999px;
-  background: linear-gradient(135deg, rgb(34 211 238), rgb(139 92 246));
-  padding: 0.72rem 1rem;
-  color: rgb(2 6 23);
-  font-size: 0.78rem;
-  font-weight: 700;
-  transition: transform 160ms ease;
-}
-
-.buy-button:hover {
-  transform: translateY(-1px);
-}
-
-.buy-button svg {
-  width: 0.9rem;
-  height: 0.9rem;
-}
-
 .empty-state {
   border: 1px dashed rgb(255 255 255 / 0.12);
   border-radius: 24px;
@@ -697,18 +627,6 @@ body.is-scrolling-down .app-header {
   border: 1px solid rgb(255 255 255 / 0.08);
   border-radius: 32px;
   background: rgb(15 23 42 / 0.85);
-}
-
-.detail-main-image {
-  width: 100%;
-  aspect-ratio: 4 / 4.3;
-  object-fit: cover;
-}
-
-.gallery-row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
 }
 
 .gallery-thumb {
@@ -977,17 +895,6 @@ body.is-scrolling-down .bottom-nav {
 .bottom-nav__item.is-current {
   background: rgb(255 255 255 / 0.08);
   color: #fff;
-}
-
-.lighthouse-badges,
-.report-table,
-.timeline-card,
-.timeline-list,
-.process-timeline,
-.report-card,
-.badge-grid,
-.score-badge {
-  display: none !important;
 }
 
 .app-footer {
