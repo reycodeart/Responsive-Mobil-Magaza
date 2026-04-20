@@ -41,7 +41,11 @@
                 data-route="home"
                 aria-label="Ana sayfaya git"
               >
-                <i data-lucide="sparkles"></i>
+                <span class="icon-slot" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="m12 3 1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
               </button>
               <button
                 type="button"
@@ -49,7 +53,12 @@
                 data-route="search"
                 aria-label="Arama sayfasına git"
               >
-                <i data-lucide="search"></i>
+                <span class="icon-slot" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="7" stroke-width="2"/>
+                    <path d="m20 20-3.5-3.5" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </span>
               </button>
 
               <button
@@ -58,7 +67,12 @@
                 data-route="cart"
                 aria-label="Sepet sayfasına git"
               >
-                <i data-lucide="shopping-bag"></i>
+                <span class="icon-slot" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M6 8h12l-1 11H7L6 8Z" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M9 8a3 3 0 1 1 6 0" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </span>
                 <span id="header-cart-badge" class="cart-badge">0</span>
               </button>
             </div>
@@ -74,20 +88,41 @@
 
       <nav class="bottom-nav" id="bottom-nav" aria-label="Alt gezinme">
         <button type="button" class="bottom-nav__item is-current" data-route="home" aria-label="Ana sayfa">
-          <i data-lucide="house"></i>
+          <span class="icon-slot" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 11.5 12 4l9 7.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5 10.5V20h14v-9.5" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </span>
           <span>Home</span>
         </button>
         <button type="button" class="bottom-nav__item" data-route="search" aria-label="Arama sayfası">
-          <i data-lucide="search"></i>
+          <span class="icon-slot" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="11" cy="11" r="7" stroke-width="2"/>
+              <path d="m20 20-3.5-3.5" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
           <span>Search</span>
         </button>
         <button type="button" class="bottom-nav__item" data-route="cart" aria-label="Sepet sayfası">
-          <i data-lucide="shopping-cart"></i>
+          <span class="icon-slot" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 5h2l2.2 9h9.8l2-7H7.2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="10" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+              <circle cx="17" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </span>
           <span>Cart</span>
           <span id="nav-cart-badge" class="bottom-nav__badge">0</span>
         </button>
         <button type="button" class="bottom-nav__item" data-route="profile" aria-label="Profil sayfası">
-          <i data-lucide="user-round"></i>
+          <span class="icon-slot" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="8" r="4" stroke-width="2"/>
+              <path d="M5 20c1.8-3 4.2-4.5 7-4.5s5.2 1.5 7 4.5" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
           <span>Profile</span>
         </button>
       </nav>

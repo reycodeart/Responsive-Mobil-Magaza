@@ -1,5 +1,3 @@
-import { createIcons, icons } from 'lucide'
-
 const STORAGE_KEYS = {
   cart: 'responsive-mobile-store-cart',
   favorites: 'responsive-mobile-store-favorites',
@@ -16,11 +14,11 @@ const products = [
     rating: 4.8,
     badge: 'Yeni',
     image:
-      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=720&q=70',
     gallery: [
-      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=720&q=70',
     ],
     shortDescription: 'İnce kasa, 16 GB RAM ve gün boyu pil ömrü sunan premium laptop.',
     details:
@@ -40,11 +38,11 @@ const products = [
     rating: 4.7,
     badge: 'Popüler',
     image:
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=720&q=70',
     gallery: [
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=720&q=70',
     ],
     shortDescription: 'Aktif gürültü engelleme ve yumuşak kulak yastıkları ile net ses.',
     details:
@@ -64,11 +62,11 @@ const products = [
     rating: 4.9,
     badge: 'Amiral Gemisi',
     image:
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=720&q=70',
     gallery: [
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=720&q=70',
     ],
     shortDescription: 'Geliştirilmiş gece modu ve 120 Hz ekranla amiral gemisi deneyimi.',
     details:
@@ -88,11 +86,11 @@ const products = [
     rating: 4.6,
     badge: 'Pro',
     image:
-      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=720&q=70',
     gallery: [
-      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=720&q=70',
     ],
     shortDescription: 'Tasarım ve video işleri için güçlü ekran kartlı ince laptop.',
     details:
@@ -112,11 +110,11 @@ const products = [
     rating: 4.5,
     badge: 'Fiyat/Performans',
     image:
-      'https://images.unsplash.com/photo-1577174881658-0f30ed549adc?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1577174881658-0f30ed549adc?auto=format&fit=crop&w=720&q=70',
     gallery: [
-      'https://images.unsplash.com/photo-1577174881658-0f30ed549adc?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1577174881658-0f30ed549adc?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=720&q=70',
     ],
     shortDescription: 'Kompakt kutu, net mikrofon ve günlük kullanım için dengeli ses.',
     details:
@@ -136,11 +134,11 @@ const products = [
     rating: 4.7,
     badge: 'Premium',
     image:
-      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=720&q=70',
     gallery: [
-      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=720&q=70',
+      'https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=720&q=70',
     ],
     shortDescription: 'Katlanabilir ekran ve premium hissiyatla gelecek odaklı telefon.',
     details:
@@ -1340,10 +1338,6 @@ const syncRoute = () => {
   }
 }
 
-const renderIcons = () => {
-  createIcons({ icons })
-}
-
 const updateBars = () => {
   appHeader.classList.toggle('is-compact', state.barCollapsed)
   bottomNav.classList.toggle('is-compact', state.barCollapsed)
@@ -1355,7 +1349,6 @@ const renderApp = () => {
   updateCartBadges()
   updateRouteButtons()
   updateBars()
-  renderIcons()
 
   if (state.route === 'search') {
     const searchField = document.querySelector('[data-search-field]')
@@ -1481,8 +1474,6 @@ window.addEventListener('scroll', () => {
 })
 
 window.addEventListener('hashchange', renderApp)
-
-renderIcons()
 
 if (!window.location.hash) {
   window.location.hash = 'home'
