@@ -43,14 +43,14 @@ a {
 }
 
 .shadow-soft {
-  box-shadow: 0 20px 60px rgba(4, 9, 19, 0.28);
+  box-shadow: 0 10px 24px rgba(4, 9, 19, 0.16);
 }
 
 .glass-surface {
   border: 1px solid rgb(255 255 255 / 0.08);
   background: linear-gradient(180deg, rgb(15 23 42 / 0.82), rgb(9 9 15 / 0.92));
-  box-shadow: 0 20px 60px rgba(4, 9, 19, 0.28);
-  backdrop-filter: blur(18px);
+  box-shadow: 0 10px 24px rgba(4, 9, 19, 0.16);
+  backdrop-filter: blur(14px);
 }
 
 .app-frame {
@@ -84,7 +84,7 @@ body.is-scrolling-down .app-header {
   background: rgb(9 9 15 / 0.75);
   backdrop-filter: blur(16px);
   padding: 0.78rem 0.88rem;
-  box-shadow: 0 14px 30px rgba(4, 9, 19, 0.18);
+  box-shadow: 0 8px 18px rgba(4, 9, 19, 0.14);
 }
 
 .brand-link {
@@ -157,6 +157,19 @@ body.is-scrolling-down .app-header {
 .filter-label svg {
   width: 1.1rem;
   height: 1.1rem;
+  stroke-width: 2;
+}
+
+.icon-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.icon-inline svg {
+  width: 1rem;
+  height: 1rem;
   stroke-width: 2;
 }
 
@@ -244,7 +257,7 @@ body.is-scrolling-down .app-header {
 .filter-panel {
   border: 1px solid rgb(255 255 255 / 0.08);
   border-radius: 1.75rem;
-  background: rgb(15 23 42 / 0.82);
+  background: linear-gradient(180deg, rgb(20 25 43 / 0.88), rgb(12 18 34 / 0.95));
   padding: 1rem;
 }
 
@@ -256,7 +269,7 @@ body.is-scrolling-down .app-header {
 .checkout-section {
   border: 1px solid rgb(255 255 255 / 0.08);
   border-radius: 1.5rem;
-  background: rgb(255 255 255 / 0.05);
+  background: linear-gradient(180deg, rgb(19 24 42 / 0.92), rgb(12 16 30 / 0.96));
   padding: 1rem;
 }
 
@@ -344,7 +357,7 @@ body.is-scrolling-down .app-header {
   gap: 0.8rem;
   border: 1px solid rgb(255 255 255 / 0.08);
   border-radius: 1rem;
-  background: rgb(9 9 15 / 0.7);
+  background: linear-gradient(180deg, rgb(19 24 42 / 0.9), rgb(11 15 27 / 0.95));
   padding: 0.9rem 1rem;
 }
 
@@ -379,14 +392,11 @@ body.is-scrolling-down .app-header {
   color: rgb(2 6 23);
   font-size: 0.92rem;
   font-weight: 800;
-  transition:
-    transform 160ms ease,
-    box-shadow 160ms ease;
+  transition: transform 160ms ease;
 }
 
 .checkout-submit:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgb(34 211 238 / 0.16);
 }
 
 .info-note {
@@ -610,18 +620,16 @@ body.is-scrolling-down .app-header {
 .product-card {
   border: 1px solid rgb(255 255 255 / 0.08);
   border-radius: 24px;
-  background: rgb(15 23 42 / 0.82);
+  background: linear-gradient(180deg, rgb(18 24 43 / 0.9), rgb(10 15 29 / 0.96));
   overflow: hidden;
   transition:
     transform 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease;
+    border-color 160ms ease;
 }
 
 .product-card:hover {
   transform: translateY(-2px);
   border-color: rgb(167 139 250 / 0.3);
-  box-shadow: 0 16px 40px rgba(8, 15, 29, 0.32);
 }
 
 .product-card__button {
@@ -720,14 +728,11 @@ body.is-scrolling-down .app-header {
   color: rgb(2 6 23);
   font-size: 0.78rem;
   font-weight: 700;
-  transition:
-    transform 160ms ease,
-    box-shadow 160ms ease;
+  transition: transform 160ms ease;
 }
 
 .buy-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgb(56 189 248 / 0.18);
 }
 
 .buy-button svg {
@@ -788,7 +793,6 @@ body.is-scrolling-down .app-header {
 
 .gallery-thumb.is-active {
   border-color: rgb(34 211 238 / 0.55);
-  box-shadow: 0 0 0 2px rgb(34 211 238 / 0.16);
 }
 
 .detail-meta-grid {
@@ -830,6 +834,46 @@ body.is-scrolling-down .app-header {
   background: linear-gradient(180deg, rgb(17 24 39 / 0.92), rgb(9 9 15 / 0.96));
 }
 
+.process-summary {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 1.5rem;
+  background: linear-gradient(180deg, rgb(18 24 43 / 0.92), rgb(10 15 29 / 0.98));
+  padding: 1.1rem 1rem;
+}
+
+.process-summary__item {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.process-summary__item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgb(34 211 238), rgb(139 92 246));
+}
+
+.process-summary__item strong {
+  display: block;
+  color: #fff;
+  font-size: 0.92rem;
+}
+
+.process-summary__item span {
+  display: block;
+  margin-top: 0.25rem;
+  color: rgb(148 163 184);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
 .insight-chip {
   display: inline-flex;
   align-items: center;
@@ -862,11 +906,10 @@ body.is-scrolling-down .app-header {
   border-radius: 20px;
   background: rgb(9 9 15 / 0.82);
   backdrop-filter: blur(18px);
-  box-shadow: 0 20px 40px rgba(2, 8, 23, 0.28);
+  box-shadow: 0 10px 22px rgba(2, 8, 23, 0.18);
   transition:
     transform 220ms ease,
-    opacity 220ms ease,
-    box-shadow 220ms ease;
+    opacity 220ms ease;
 }
 
 body.is-scrolling-down .bottom-nav {

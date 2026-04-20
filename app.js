@@ -3,6 +3,21 @@ const STORAGE_KEYS = {
   favorites: 'responsive-mobile-store-favorites',
 }
 
+const inlineIcon = {
+  heart:
+    '<span class="icon-slot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20.5 4.8 13.7A4.7 4.7 0 0 1 11.4 7l.6.6.6-.6a4.7 4.7 0 0 1 6.6 6.7L12 20.5Z" stroke-width="2" stroke-linejoin="round"/></svg></span>',
+  heartOff:
+    '<span class="icon-slot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4l16 16" stroke-width="2" stroke-linecap="round"/><path d="M19.1 13.5a4.7 4.7 0 0 0-6.5-6.5l-.6.6-.6-.6a4.7 4.7 0 0 0-6.6 6.7L12 20.5l2.3-2.2" stroke-width="2" stroke-linejoin="round"/></svg></span>',
+  badgePercent:
+    '<span class="icon-slot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 4h8l4 4v8l-4 4H8l-4-4V8l4-4Z" stroke-width="2" stroke-linejoin="round"/><path d="M9 15 15 9" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="9" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1" fill="currentColor" stroke="none"/></svg></span>',
+  search:
+    '<span class="icon-slot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke-width="2" stroke-linecap="round"/></svg></span>',
+  arrowLeft:
+    '<span class="icon-slot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 12H5" stroke-width="2" stroke-linecap="round"/><path d="m11 18-6-6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>',
+  shieldCheck:
+    '<span class="icon-slot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l7 3v5c0 4.7-2.9 8.5-7 10-4.1-1.5-7-5.3-7-10V6l7-3Z" stroke-width="2" stroke-linejoin="round"/><path d="m9.5 12 1.8 1.8 3.5-3.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>',
+}
+
 const localAssets = {
   laptop: './product-laptop.svg',
   phone: './product-phone.svg',
@@ -380,7 +395,7 @@ const productCardMarkup = (product) => {
           data-product-id="${product.id}"
           aria-label="${product.name} favorilere ekle"
         >
-          <i data-lucide="${isFavorite ? 'heart-off' : 'heart'}"></i>
+          ${isFavorite ? inlineIcon.heartOff : inlineIcon.heart}
         </button>
         <button
           type="button"
@@ -422,7 +437,7 @@ const productCardMarkup = (product) => {
           </div>
           <button
             type="button"
-            class="rounded-full bg-gradient-to-r from-cyan-300 to-violet-400 px-4 py-2 text-xs font-semibold text-slate-950 transition hover:-translate-y-0.5"
+            class="action-button"
             data-action="add-to-cart"
             data-product-id="${product.id}"
             aria-label="${product.name} ürününü sepete ekle"
@@ -449,7 +464,7 @@ const dealBannerMarkup = () => {
           <div class="mt-5 flex items-center gap-3">
             <button
               type="button"
-              class="rounded-full bg-gradient-to-r from-cyan-300 to-violet-400 px-4 py-2 text-sm font-semibold text-slate-950"
+              class="theme-button"
               data-action="open-product"
               data-product-id="${deal.id}"
               aria-label="${deal.name} fırsat ürününü incele"
@@ -535,7 +550,7 @@ const filtersPanelMarkup = () => `
         data-action="toggle-deals"
         aria-pressed="${String(state.onlyDeals)}"
       >
-        <i data-lucide="badge-percent"></i>
+        ${inlineIcon.badgePercent}
         <span>Sadece fırsatlar</span>
       </button>
       <button
@@ -544,7 +559,7 @@ const filtersPanelMarkup = () => `
         data-action="toggle-favorites"
         aria-pressed="${String(state.onlyFavorites)}"
       >
-        <i data-lucide="heart"></i>
+        ${inlineIcon.heart}
         <span>Sadece favoriler</span>
       </button>
     </div>
@@ -581,6 +596,36 @@ const homeViewMarkup = () => {
             `
         }
       </section>
+
+      <section class="summary-card process-summary-card p-5" aria-labelledby="process-summary-heading">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">Süreç Özeti</p>
+            <h2 id="process-summary-heading" class="mt-2 text-xl font-semibold text-white">3 Haftalık Süreç Yapısı</h2>
+          </div>
+          <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300">
+            Final teslim
+          </span>
+        </div>
+
+        <div class="process-summary-grid mt-4">
+          <article class="process-summary-item process-summary-item--teal">
+            <span>Hafta 1</span>
+            <strong>Analiz</strong>
+            <p>Konu araştırması, teknoloji seçimi ve wireframe planlaması.</p>
+          </article>
+          <article class="process-summary-item process-summary-item--violet">
+            <span>Hafta 2</span>
+            <strong>Geliştirme</strong>
+            <p>Ürün listeleme, sepet mantığı ve responsive arayüzün kodlanması.</p>
+          </article>
+          <article class="process-summary-item process-summary-item--amber">
+            <span>Hafta 3</span>
+            <strong>Teslim</strong>
+            <p>Lighthouse iyileştirmeleri, testler ve raporlama süreci.</p>
+          </article>
+        </div>
+      </section>
     </section>
   `
 }
@@ -597,7 +642,7 @@ const productDetailMarkup = () => {
         class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-200"
         data-action="go-home"
       >
-        <i data-lucide="arrow-left"></i>
+        ${inlineIcon.arrowLeft}
         <span>Ana sayfaya dön</span>
       </button>
 
@@ -621,7 +666,7 @@ const productDetailMarkup = () => {
               data-product-id="${product.id}"
               aria-label="${product.name} favorilere ekle"
             >
-              <i data-lucide="${isFavorite ? 'heart-off' : 'heart'}"></i>
+              ${isFavorite ? inlineIcon.heartOff : inlineIcon.heart}
             </button>
           </div>
 
@@ -698,7 +743,7 @@ const productDetailMarkup = () => {
               </div>
               <button
                 type="button"
-                class="rounded-full bg-gradient-to-r from-cyan-300 to-violet-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5"
+                class="theme-button theme-button--wide"
                 data-action="add-to-cart"
                 data-product-id="${product.id}"
                 aria-label="${product.name} ürününü sepete ekle"
@@ -819,7 +864,7 @@ const cartViewMarkup = () => {
                 </div>
                 <button
                   type="button"
-                  class="mt-5 w-full rounded-2xl bg-gradient-to-r from-cyan-300 to-violet-400 px-4 py-3 text-sm font-bold text-slate-950 transition hover:-translate-y-0.5"
+                class="theme-button theme-button--block"
                   data-action="go-checkout"
                 >
                   Ödemeye Geç
@@ -1012,7 +1057,7 @@ const checkoutViewMarkup = () => {
                     class="checkout-submit mt-5"
                     data-action="complete-order"
                   >
-                    <i data-lucide="shield-check"></i>
+                    ${inlineIcon.shieldCheck}
                     <span>Siparişi Tamamla</span>
                   </button>
                 </section>
@@ -1180,7 +1225,7 @@ const searchViewMarkup = () => {
       <div class="premium-card p-4">
         <label class="sr-only" for="search-input-inner">Ürün ara</label>
         <div class="search-box">
-          <i data-lucide="search"></i>
+          ${inlineIcon.search}
           <input
             id="search-input-inner"
             data-search-field
