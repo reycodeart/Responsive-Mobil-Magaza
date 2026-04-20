@@ -913,6 +913,66 @@ body.is-scrolling-down .bottom-nav {
   font-size: 0.85rem;
 }
 
+.lighthouse-badges {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.lighthouse-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 0.05);
+  padding: 0.85rem 1rem;
+  text-align: left;
+}
+
+.lighthouse-badge strong {
+  display: block;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.lighthouse-badge span {
+  display: block;
+  margin-top: 0.15rem;
+  color: rgb(148 163 184);
+  font-size: 0.76rem;
+}
+
+.lighthouse-score {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: rgb(3 7 18);
+}
+
+.lighthouse-score--green {
+  background: linear-gradient(135deg, rgb(52 211 153), rgb(74 222 128));
+}
+
+.lighthouse-score--cyan {
+  background: linear-gradient(135deg, rgb(34 211 238), rgb(56 189 248));
+}
+
+.lighthouse-score--violet {
+  background: linear-gradient(135deg, rgb(139 92 246), rgb(168 85 247));
+  color: #fff;
+}
+
+.lighthouse-score--amber {
+  background: linear-gradient(135deg, rgb(251 191 36), rgb(249 115 22));
+}
+
 @media (min-width: 768px) {
   .app-frame {
     width: min(100%, 1120px);
@@ -941,6 +1001,10 @@ body.is-scrolling-down .bottom-nav {
 
   .process-timeline {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lighthouse-badges {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .product-grid {

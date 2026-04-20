@@ -221,6 +221,23 @@ Aşağıdaki tablo, teslim raporunda kullanılmak üzere temsili ve yüksek sevi
 
 ---
 
+## Netlify Yayın Uyumluluğu
+
+Proje, Netlify üzerinde sorunsuz çalışacak şekilde sonlandırılmıştır. Bu kapsamda aşağıdaki düzenlemeler uygulanmıştır:
+
+- SPA yönlendirmesi için `public/_redirects` dosyası eklenmiştir.
+- `_redirects` içeriği:
+
+  ```text
+  /* /index.html 200
+  ```
+
+- Vite yapılandırmasında göreceli asset yolu üretimi için `base: './'` ayarı kullanılmıştır.
+- CSS ve JavaScript dosya yolları yayın ortamında kırılmayacak şekilde build çıktısında göreceli üretilmektedir.
+- Bu yapı sayesinde Netlify üzerinde doğrudan tek tıkla yayın yapılabilir.
+
+---
+
 ## Visual Studio Code'da Çalıştırma
 
 1. Proje klasörünü Visual Studio Code ile açın.

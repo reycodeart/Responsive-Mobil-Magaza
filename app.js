@@ -1144,6 +1144,37 @@ const aboutViewMarkup = () => `
         </table>
       </div>
     </section>
+
+    <section class="premium-card p-5">
+      <div class="flex items-center justify-between gap-3">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">Sunum Rozetleri</p>
+          <h2 class="mt-2 text-xl font-semibold text-white">Lighthouse Vurgu Kartları</h2>
+        </div>
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300">
+          90+ hedefi
+        </span>
+      </div>
+
+      <div class="mt-4 badge-grid">
+        <div class="score-badge">
+          <span>Performance</span>
+          <strong>92</strong>
+        </div>
+        <div class="score-badge">
+          <span>Accessibility</span>
+          <strong>97</strong>
+        </div>
+        <div class="score-badge">
+          <span>Best Practices</span>
+          <strong>95</strong>
+        </div>
+        <div class="score-badge">
+          <span>SEO</span>
+          <strong>96</strong>
+        </div>
+      </div>
+    </section>
   </section>
 `
 
@@ -1230,6 +1261,7 @@ const profileViewMarkup = () => {
           type="button"
           class="mt-4 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           data-action="go-about"
+          aria-label="Proje hakkında ve süreç sayfasını aç"
         >
           Proje Hakkında / Süreç Sayfasını Aç
         </button>
